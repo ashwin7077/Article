@@ -3,7 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>The Invisible Deficiency — Aswin Paudel</title>
+<title>The Invisible Deficiency
+
+</title>
 <meta name="description" content="Protein quality, distribution, and adequacy in Nepali diets — by Aswin Paudel.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -66,7 +68,7 @@
     display:flex;
     align-items:center;
     justify-content:center;
-    padding:28px 20px 0;
+    padding:28px clamp(14px, 5vw, 20px) 0;
   }
   .back-link{
     display:inline-flex;
@@ -93,14 +95,16 @@
 
   /* ---------- Article header ---------- */
   .article-head{
-    max-width:720px;
+    max-width:min(760px, 90vw);
     margin:0 auto;
-    padding:6vh 28px 0;
+    padding:6vh clamp(14px, 5vw, 28px) 0;
     text-align:center;
   }
 
   .kicker-row{
     display:flex;
+    flex-wrap:wrap;
+    row-gap:8px;
     align-items:center;
     justify-content:center;
     gap:12px;
@@ -131,6 +135,34 @@
   }
   .byline .name{ color:var(--gold-bright); font-style:italic; }
 
+  .cross-post{
+    display:flex;
+    flex-wrap:wrap;
+    align-items:center;
+    justify-content:center;
+    gap:10px;
+    row-gap:6px;
+    margin:14px 0 0;
+    font-size:12px;
+    letter-spacing:0.04em;
+    color:var(--ink-faint);
+  }
+  .cross-post .dot{
+    width:3px; height:3px;
+    border-radius:50%;
+    background:var(--ink-faint);
+  }
+  .cross-post a{
+    color:var(--gold-bright);
+    text-decoration:none;
+    border-bottom:1px solid rgba(226,197,132,0.3);
+    padding-bottom:1px;
+    transition:border-color 0.3s ease;
+  }
+  .cross-post a:hover, .cross-post a:focus-visible{
+    border-color:var(--gold-bright);
+  }
+
   .tagline{
     max-width:520px;
     margin:34px auto 0;
@@ -151,9 +183,9 @@
 
   /* ---------- Abstract ---------- */
   .abstract{
-    max-width:640px;
+    max-width:min(760px, 90vw);
     margin:56px auto 0;
-    padding:34px 40px;
+    padding:32px clamp(16px, 6vw, 40px);
     border:1px solid var(--line);
     background:linear-gradient(180deg, rgba(255,255,255,0.015), rgba(255,255,255,0));
   }
@@ -173,9 +205,9 @@
 
   /* ---------- Table of contents ---------- */
   .toc{
-    max-width:640px;
+    max-width:min(760px, 90vw);
     margin:40px auto 0;
-    padding:30px 40px;
+    padding:28px clamp(16px, 6vw, 40px);
     border:1px solid var(--line);
   }
   .toc .label{
@@ -218,9 +250,9 @@
 
   /* ---------- Article body ---------- */
   .article-body{
-    max-width:680px;
+    max-width:min(800px, 90vw);
     margin:0 auto;
-    padding:8vh 28px 4vh;
+    padding:8vh clamp(14px, 6vw, 28px) 4vh;
   }
 
   .chapter{
@@ -319,7 +351,7 @@
     position:relative;
     margin:46px auto;
     max-width:540px;
-    padding:6px 0 6px 30px;
+    padding:6px 0 6px clamp(16px, 5vw, 30px);
     border-left:2px solid var(--gold);
     text-align:left;
   }
@@ -333,35 +365,60 @@
 
   /* ---------- Tables ---------- */
   .table-wrap{
+    position:relative;
     margin:8px 0 30px;
-    overflow-x:auto;
     border:1px solid var(--line);
   }
+  .table-scroll{
+    overflow-x:auto;
+    -webkit-overflow-scrolling:touch;
+  }
+  /* fade + hint shown only when the table actually overflows */
+  .table-wrap.is-scrollable::after{
+    content:"";
+    position:absolute;
+    top:0; right:0; bottom:0;
+    width:36px;
+    pointer-events:none;
+    background:linear-gradient(to left, var(--bg), rgba(10,10,9,0));
+    opacity:1;
+    transition:opacity 0.3s ease;
+  }
+  .table-wrap.is-scrollable.at-end::after{ opacity:0; }
+  .scroll-hint{
+    display:none;
+    font-size:11px;
+    letter-spacing:0.12em;
+    color:var(--ink-faint);
+    padding:0 0 10px;
+  }
+  .table-wrap.is-scrollable + .scroll-hint{ display:block; }
+
   table{
     width:100%;
     border-collapse:collapse;
     font-size:0.94rem;
-    min-width:420px;
   }
+  th:first-child, td:first-child{ min-width:104px; }
   caption.table-title{
     caption-side:top;
     text-align:left;
     font-size:11px;
     letter-spacing:0.18em;
     color:var(--gold);
-    padding:16px 18px 0;
+    padding:16px clamp(12px, 4vw, 18px) 0;
   }
   thead th{
     text-align:left;
     font-weight:400;
     font-style:italic;
     color:var(--ink-dim);
-    padding:16px 18px 12px;
+    padding:16px clamp(12px, 4vw, 18px) 12px;
     border-bottom:1px solid var(--gold);
     white-space:nowrap;
   }
   tbody td{
-    padding:12px 18px;
+    padding:12px clamp(12px, 4vw, 18px);
     border-bottom:1px solid var(--line);
     color:#d8d4c8;
     line-height:1.5;
@@ -369,9 +426,9 @@
   }
   tbody tr:last-child td{ border-bottom:none; }
   tbody td.num{ color:var(--gold-bright); white-space:nowrap; }
-  table .note{
+  .table-wrap .note{
     display:block;
-    padding:12px 18px 18px;
+    padding:12px clamp(12px, 4vw, 18px) 18px;
     font-size:12px;
     font-style:italic;
     color:var(--ink-faint);
@@ -382,7 +439,7 @@
     display:flex;
     justify-content:center;
     margin:8px 0 34px;
-    padding:30px 20px;
+    padding:30px clamp(12px, 5vw, 20px);
     border:1px solid var(--line);
   }
   .diagram svg{ color:var(--ink-dim); }
@@ -438,9 +495,9 @@
   footer.site-footer{
     position:relative;
     z-index:3;
-    max-width:680px;
+    max-width:min(760px, 90vw);
     margin:0 auto;
-    padding:0 28px 12vh;
+    padding:0 clamp(14px, 6vw, 28px) 12vh;
     text-align:center;
   }
   footer.site-footer .fleur{
@@ -488,14 +545,34 @@
     color:var(--gold);
   }
 
+  @media (min-width:1400px){
+    .article-head, .abstract, .toc, footer.site-footer{ max-width:840px; }
+    .article-body{ max-width:900px; }
+  }
+
   @media (max-width:640px){
-    .article-head{ padding:5vh 20px 0; }
-    .abstract, .toc{ padding:26px 22px; }
+    .article-head{ padding:5vh clamp(14px, 5vw, 20px) 0; }
+    .abstract, .toc{ padding:22px clamp(14px, 5vw, 22px); }
     .toc ol{ columns:1; }
-    .article-body{ padding:6vh 20px 3vh; }
+    .article-body{ padding:6vh clamp(14px, 5vw, 20px) 3vh; }
     .chapter{ margin-top:7vh; padding-top:7vh; }
-    blockquote.pull{ padding-left:20px; margin:36px auto; }
+    blockquote.pull{ padding-left:16px; margin:32px auto; }
     thead th, tbody td{ padding:10px 12px; font-size:0.86rem; }
+    h1.title{ letter-spacing:0; }
+    .tagline{ line-height:1.85; }
+  }
+
+  @media (max-width:400px){
+    .topbar{ padding-top:22px; }
+    .article-head{ padding-top:4vh; }
+    .kicker-row{ font-size:11px; gap:14px; }
+    .kicker-row .dot{ display:none; }
+    .abstract, .toc{ padding:18px 14px; }
+    .abstract .label, .toc .label{ letter-spacing:0.2em; }
+    .article-body{ padding:5vh 14px 2.5vh; }
+    .chapter-num{ font-size:11px; }
+    p, .article-body ul li, .article-body ol.plain li{ font-size:0.98rem; }
+    thead th, tbody td{ padding:9px 10px; font-size:0.8rem; }
   }
 
   @media (prefers-reduced-motion: reduce){
@@ -507,12 +584,17 @@
     .reveal{ opacity:1; transform:none; }
   }
 </style>
+<noscript>
+  <style>
+    .reveal{ opacity:1 !important; transform:none !important; }
+  </style>
+</noscript>
 </head>
 <body>
 
 <div class="topbar">
-  <a class="back-link" href="/">
-    <span class="chevron">&#8249;</span> Aswin Paudel — Essays &amp; Long-Form Writing
+  <a class="back-link" href="../index.html">
+    <span class="chevron">&#8249;</span> Home
   </a>
 </div>
 
@@ -530,6 +612,13 @@
     <h1 class="title">The Invisible Deficiency: Protein Quality, Distribution, and Adequacy in Nepali Diets</h1>
 
     <p class="byline">Written by <span class="name">Aswin Paudel</span></p>
+
+    <div class="cross-post">
+      <span>Also posted on</span>
+      <a href="https://www.researchgate.net/publication/414295309_The_Invisible_Deficiency_Protein_Quality_Distribution_and_Adequacy_in_Nepali_Diets">ResearchGate</a>
+      <span class="dot"></span>
+      <a href="https://medium.com/@7077ashwin7/abstract-1df80bcb0b95">Medium</a>
+    </div>
 
     <p class="tagline">
       Calorie intake decides your weight. Macronutrients decide your shape.
@@ -617,6 +706,7 @@
       <p>Nutritionally, the twenty amino acids fall into three groups. The classification has nothing to do with importance. All twenty are essential, because a protein missing any one of them cannot be built. The classification is about origin: whether the body can make the amino acid itself, or whether it must arrive in food.</p>
 
       <div class="table-wrap">
+<div class="table-scroll">
         <table>
           <caption class="table-title">Amino Acid Classification</caption>
           <thead>
@@ -641,6 +731,7 @@
           </tbody>
         </table>
       </div>
+</div>
 
       <p>Arginine is the clearest example of the conditional category. A healthy adult manufactures enough arginine internally and never needs to think about it. An infant growing rapidly, a patient recovering from major surgery, or a person fighting a serious infection cannot keep up with demand, and at that point arginine must come from the diet. This is one reason protein requirements rise sharply during illness and recovery.</p>
 
@@ -685,6 +776,7 @@
       <p>A second point is specific to South Asia. The ICMR&ndash;NIN expert group notes that for populations consuming cereal-based diets in which protein quality is lower, the requirement rises to approximately 1&nbsp;g/kg per day <a class="cite-link" href="#ref-icmr">(ICMR&ndash;NIN, 2020)</a>. This is a significant adjustment, and it means the commonly quoted 0.8 figure understates the requirement for a typical Indian or Nepali vegetarian diet.</p>
 
       <div class="table-wrap">
+<div class="table-scroll">
         <table>
           <caption class="table-title">Daily Protein Target by Body Weight</caption>
           <thead>
@@ -698,14 +790,16 @@
             <tr><td>90&nbsp;kg (198&nbsp;lb)</td><td class="num">~72&nbsp;g</td><td class="num">~90&nbsp;g</td></tr>
           </tbody>
         </table>
-        <span class="note">Baseline column calculated at 0.8&nbsp;g/kg/day. Adjusted column reflects the ICMR&ndash;NIN (2020) guidance that cereal-based diets with lower protein quality require approximately 1&nbsp;g/kg/day.</span>
       </div>
+<span class="note">Baseline column calculated at 0.8&nbsp;g/kg/day. Adjusted column reflects the ICMR&ndash;NIN (2020) guidance that cereal-based diets with lower protein quality require approximately 1&nbsp;g/kg/day.</span>
+</div>
 
       <h3 id="by-activity">Requirements by Activity Level and Life Stage</h3>
 
       <p>For most people, the RDA is the wrong reference point. The following table gives working ranges that reflect activity, age, and physiological state.</p>
 
       <div class="table-wrap">
+<div class="table-scroll">
         <table>
           <caption class="table-title">Protein Requirements by Activity Level and Life Stage</caption>
           <thead>
@@ -725,6 +819,7 @@
           </tbody>
         </table>
       </div>
+</div>
 
       <h3 id="spreading">Spreading Protein Across the Day</h3>
 
@@ -845,6 +940,7 @@
       </ul>
 
       <div class="table-wrap">
+<div class="table-scroll">
         <table>
           <caption class="table-title">Typical Protein Digestibility by Food</caption>
           <thead><tr><th>Food</th><th>Digestibility</th><th>Comment</th></tr></thead>
@@ -860,8 +956,9 @@
             <tr><td>Raw or unprocessed legumes</td><td class="num">~70% or lower</td><td>Trypsin inhibitors are still active.</td></tr>
           </tbody>
         </table>
-        <span class="note">Values are approximate and vary with variety, growing conditions, and preparation method.</span>
       </div>
+<span class="note">Values are approximate and vary with variety, growing conditions, and preparation method.</span>
+</div>
 
       <p><strong>Why does animal protein digest better?</strong> Animal protein contains no fiber and none of the compounds that block digestive enzymes. Plant proteins, by contrast, are frequently enclosed within cellulose cell walls that resist breakdown, and they carry phytic acid and trypsin inhibitors that directly interfere with the enzymes trying to digest them. Crucially, this is not a fixed disadvantage &mdash; cooking, soaking, sprouting, and fermenting substantially reduce these effects.</p>
 
@@ -881,6 +978,7 @@
       <p><strong>PDCAAS (Protein Digestibility-Corrected Amino Acid Score).</strong> The former gold standard, used by the FDA and WHO until approximately 2013. It combines the essential amino acid profile with faecal digestibility, capped at 1.0 (100%) &mdash; which is its main limitation, since any food scoring above 1.0 is truncated, hiding genuine quality differences at the top end.</p>
 
       <div class="table-wrap">
+<div class="table-scroll">
         <table>
           <caption class="table-title">PDCAAS Values for Selected Foods</caption>
           <thead><tr><th>Food</th><th>PDCAAS</th></tr></thead>
@@ -895,10 +993,12 @@
           </tbody>
         </table>
       </div>
+</div>
 
       <p><strong>DIAAS (Digestible Indispensable Amino Acid Score).</strong> The FAO Expert Consultation recommended in 2011 that DIAAS replace PDCAAS as the preferred method for describing protein quality, and that it be adopted in Codex food labelling and claims guidelines <a class="cite-link" href="#ref-fao">(FAO, 2011)</a>. DIAAS differs in two important ways: it measures digestibility at the end of the small intestine (the ileum) rather than from faecal output &mdash; more precise, since bacteria in the colon alter nitrogen content and distort faecal-based measurements &mdash; and it is not capped at 100%, so genuine differences between high-quality proteins remain visible.</p>
 
       <div class="table-wrap">
+<div class="table-scroll">
         <table>
           <caption class="table-title">DIAAS Values for Selected Foods</caption>
           <thead><tr><th>Food</th><th>DIAAS</th></tr></thead>
@@ -912,8 +1012,9 @@
             <tr><td>Wheat gluten</td><td class="num">~0.25&ndash;0.40</td></tr>
           </tbody>
         </table>
-        <span class="note">Adapted from <a class="cite-link" href="#ref-fao">FAO (2011)</a>. Values above 1.00 indicate protein quality exceeding the reference requirement pattern.</span>
       </div>
+<span class="note">Adapted from <a class="cite-link" href="#ref-fao">FAO (2011)</a>. Values above 1.00 indicate protein quality exceeding the reference requirement pattern.</span>
+</div>
 
       <h3 id="in-practice">What This Means in Practice</h3>
       <ul>
@@ -986,6 +1087,7 @@
       <h2>Dietary Protein Content of Foods Commonly Consumed in Nepal</h2>
 
       <div class="table-wrap">
+<div class="table-scroll">
         <table>
           <thead>
             <tr><th>Food</th><th>Protein per 100&nbsp;g</th><th>Typical household serving</th><th>Protein per serving</th></tr>
@@ -1009,6 +1111,7 @@
           </tbody>
         </table>
       </div>
+</div>
     </section>
 
     <!-- ===================== RECOMMENDATIONS ===================== -->
@@ -1119,6 +1222,9 @@
 
 <script>
   const revealEls = document.querySelectorAll('.reveal');
+  if (!('IntersectionObserver' in window)) {
+    revealEls.forEach((el) => el.classList.add('in'));
+  } else {
   const io = new IntersectionObserver((entries) => {
     entries.forEach((entry) => {
       if (entry.isIntersecting) {
@@ -1128,6 +1234,28 @@
     });
   }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
   revealEls.forEach((el) => io.observe(el));
+  }
+  // Flag tables that actually overflow, so the fade hint only shows when useful
+  function syncTableScroll(){
+    document.querySelectorAll('.table-wrap').forEach((wrap) => {
+      const sc = wrap.querySelector('.table-scroll');
+      if (!sc) return;
+      const overflows = sc.scrollWidth > sc.clientWidth + 1;
+      wrap.classList.toggle('is-scrollable', overflows);
+      if (overflows) {
+        const atEnd = sc.scrollLeft + sc.clientWidth >= sc.scrollWidth - 2;
+        wrap.classList.toggle('at-end', atEnd);
+      } else {
+        wrap.classList.remove('at-end');
+      }
+    });
+  }
+  document.querySelectorAll('.table-scroll').forEach((sc) => {
+    sc.addEventListener('scroll', syncTableScroll, { passive: true });
+  });
+  window.addEventListener('resize', syncTableScroll);
+  window.addEventListener('load', syncTableScroll);
+  syncTableScroll();
 </script>
 
 </body>
