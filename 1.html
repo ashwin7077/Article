@@ -1,0 +1,1151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Invisible Deficiency — Aswin Paudel</title>
+<meta name="description" content="Protein quality, distribution, and adequacy in Nepali diets — by Aswin Paudel.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;1,300&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0a0a09;
+    --bg-panel:#121110;
+    --ink:#f2efe8;
+    --ink-dim:#a49f92;
+    --ink-faint:#726d60;
+    --gold:#bd9a5f;
+    --gold-bright:#e2c584;
+    --line:#2b2823;
+    --rule:#3a352c;
+  }
+
+  *{ box-sizing:border-box; }
+
+  html{
+    scroll-behavior:smooth;
+    background:var(--bg);
+    overscroll-behavior-y:none;
+  }
+
+  body{
+    margin:0;
+    min-height:100%;
+    background:
+      radial-gradient(ellipse 120% 80% at 50% -10%, #17140f 0%, var(--bg) 55%);
+    background-color:var(--bg);
+    color:var(--ink);
+    font-family:'Merriweather', Georgia, serif;
+    font-weight:300;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+    overscroll-behavior-y:none;
+  }
+
+  body::before{
+    content:"";
+    position:fixed;
+    inset:0;
+    pointer-events:none;
+    z-index:2;
+    opacity:0.05;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+
+  ::selection{ background:var(--gold); color:#141210; }
+
+  a{ color:inherit; }
+
+  img, svg{ max-width:100%; }
+
+  /* ---------- Top bar ---------- */
+  .topbar{
+    position:relative;
+    z-index:4;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:28px clamp(14px, 5vw, 20px) 0;
+  }
+  .back-link{
+    display:inline-flex;
+    align-items:center;
+    gap:10px;
+    font-size:12.5px;
+    letter-spacing:0.14em;
+    text-decoration:none;
+    color:var(--ink-faint);
+    transition:color 0.35s ease;
+  }
+  .back-link:hover, .back-link:focus-visible{ color:var(--gold-bright); }
+  .back-link .chevron{
+    display:inline-block;
+    transform:scaleX(1.2);
+    transition:transform 0.35s ease;
+  }
+  .back-link:hover .chevron{ transform:translateX(-3px) scaleX(1.2); }
+
+  main{
+    position:relative;
+    z-index:3;
+  }
+
+  /* ---------- Article header ---------- */
+  .article-head{
+    max-width:720px;
+    margin:0 auto;
+    padding:6vh clamp(14px, 5vw, 28px) 0;
+    text-align:center;
+  }
+
+  .kicker-row{
+    display:flex;
+    flex-wrap:wrap;
+    row-gap:8px;
+    align-items:center;
+    justify-content:center;
+    gap:12px;
+    font-size:12px;
+    letter-spacing:0.18em;
+    color:var(--ink-faint);
+  }
+  .kicker-row .dot{
+    width:3px; height:3px;
+    border-radius:50%;
+    background:var(--ink-faint);
+  }
+
+  h1.title{
+    margin:22px 0 0;
+    font-size:clamp(2rem, 5.4vw, 3.3rem);
+    font-weight:300;
+    line-height:1.22;
+    letter-spacing:0.005em;
+    color:var(--ink);
+  }
+
+  .byline{
+    margin:24px 0 0;
+    font-size:13.5px;
+    letter-spacing:0.06em;
+    color:var(--ink-dim);
+  }
+  .byline .name{ color:var(--gold-bright); font-style:italic; }
+
+  .tagline{
+    max-width:520px;
+    margin:34px auto 0;
+    padding:22px 0 0;
+    border-top:1px solid var(--line);
+    font-style:italic;
+    font-size:1.02rem;
+    line-height:2;
+    color:#cfcabd;
+  }
+
+  .head-rule{
+    width:64px;
+    height:1px;
+    background:var(--gold);
+    margin:40px auto 0;
+  }
+
+  /* ---------- Abstract ---------- */
+  .abstract{
+    max-width:640px;
+    margin:56px auto 0;
+    padding:32px clamp(16px, 6vw, 40px);
+    border:1px solid var(--line);
+    background:linear-gradient(180deg, rgba(255,255,255,0.015), rgba(255,255,255,0));
+  }
+  .abstract .label{
+    font-size:11px;
+    letter-spacing:0.26em;
+    color:var(--gold);
+    margin-bottom:16px;
+  }
+  .abstract p{
+    margin:0 0 16px;
+    font-size:1rem;
+    line-height:1.9;
+    color:var(--ink-dim);
+  }
+  .abstract p:last-child{ margin-bottom:0; }
+
+  /* ---------- Table of contents ---------- */
+  .toc{
+    max-width:640px;
+    margin:40px auto 0;
+    padding:28px clamp(16px, 6vw, 40px);
+    border:1px solid var(--line);
+  }
+  .toc .label{
+    font-size:11px;
+    letter-spacing:0.26em;
+    color:var(--gold);
+    margin-bottom:18px;
+  }
+  .toc ol{
+    columns:2;
+    column-gap:36px;
+    margin:0;
+    padding:0;
+    list-style:none;
+    counter-reset:toc;
+  }
+  .toc li{
+    counter-increment:toc;
+    break-inside:avoid;
+    margin-bottom:11px;
+  }
+  .toc a{
+    display:flex;
+    gap:10px;
+    font-size:13.5px;
+    line-height:1.5;
+    text-decoration:none;
+    color:var(--ink-dim);
+    transition:color 0.3s ease;
+  }
+  .toc a::before{
+    content:counter(toc, upper-roman);
+    flex:none;
+    font-size:11px;
+    color:var(--gold);
+    padding-top:1px;
+    min-width:1.6em;
+  }
+  .toc a:hover, .toc a:focus-visible{ color:var(--gold-bright); }
+
+  /* ---------- Article body ---------- */
+  .article-body{
+    max-width:680px;
+    margin:0 auto;
+    padding:8vh clamp(14px, 6vw, 28px) 4vh;
+  }
+
+  .chapter{
+    margin-top:9vh;
+    padding-top:9vh;
+    border-top:1px solid var(--line);
+    scroll-margin-top:28px;
+  }
+  .chapter:first-child{
+    margin-top:6vh;
+    padding-top:0;
+    border-top:none;
+  }
+
+  .chapter-num{
+    display:block;
+    font-size:12px;
+    letter-spacing:0.24em;
+    color:var(--gold);
+    margin-bottom:10px;
+  }
+
+  h2{
+    font-size:clamp(1.5rem, 3.2vw, 1.95rem);
+    font-weight:400;
+    line-height:1.35;
+    letter-spacing:0.005em;
+    color:var(--ink);
+    margin:0 0 26px;
+  }
+
+  h3{
+    font-size:1.18rem;
+    font-style:italic;
+    font-weight:400;
+    color:var(--gold-bright);
+    margin:44px 0 16px;
+    line-height:1.5;
+  }
+  .chapter > h3:first-of-type{ margin-top:0; }
+
+  p{
+    font-size:1.04rem;
+    line-height:1.9;
+    color:#d8d4c8;
+    margin:0 0 22px;
+  }
+  p:last-child{ margin-bottom:0; }
+
+  .article-body ul, .article-body ol.plain{
+    margin:0 0 24px;
+    padding-left:0;
+    list-style:none;
+  }
+  .article-body ul li, .article-body ol.plain li{
+    position:relative;
+    padding-left:24px;
+    font-size:1.02rem;
+    line-height:1.85;
+    color:#d8d4c8;
+    margin-bottom:12px;
+  }
+  .article-body ul li::before{
+    content:"";
+    position:absolute;
+    left:0; top:0.72em;
+    width:6px; height:1px;
+    background:var(--gold);
+  }
+  .article-body ol.plain{ counter-reset:plain; }
+  .article-body ol.plain li{ counter-increment:plain; padding-left:28px; }
+  .article-body ol.plain li::before{
+    content:counter(plain) ".";
+    position:absolute; left:0; top:0;
+    width:auto; height:auto;
+    background:none;
+    font-size:0.92rem;
+    color:var(--gold);
+  }
+
+  em{ color:#e8e4d8; }
+  strong{ font-weight:700; color:var(--ink); }
+
+  .cite-link{
+    color:var(--gold-bright);
+    text-decoration:none;
+    border-bottom:1px solid rgba(226,197,132,0.35);
+    transition:border-color 0.3s ease;
+    font-style:normal;
+    white-space:nowrap;
+  }
+  .cite-link:hover, .cite-link:focus-visible{ border-color:var(--gold-bright); }
+
+  /* ---------- Pull quotes ---------- */
+  blockquote.pull{
+    position:relative;
+    margin:46px auto;
+    max-width:540px;
+    padding:6px 0 6px clamp(16px, 5vw, 30px);
+    border-left:2px solid var(--gold);
+    text-align:left;
+  }
+  blockquote.pull p{
+    font-style:italic;
+    font-size:clamp(1.15rem, 2.6vw, 1.4rem);
+    line-height:1.6;
+    color:var(--gold-bright);
+    margin:0;
+  }
+
+  /* ---------- Tables ---------- */
+  .table-wrap{
+    margin:8px 0 30px;
+    overflow-x:auto;
+    border:1px solid var(--line);
+  }
+  table{
+    width:100%;
+    border-collapse:collapse;
+    font-size:0.94rem;
+    min-width:420px;
+  }
+  caption.table-title{
+    caption-side:top;
+    text-align:left;
+    font-size:11px;
+    letter-spacing:0.18em;
+    color:var(--gold);
+    padding:16px clamp(12px, 4vw, 18px) 0;
+  }
+  thead th{
+    text-align:left;
+    font-weight:400;
+    font-style:italic;
+    color:var(--ink-dim);
+    padding:16px clamp(12px, 4vw, 18px) 12px;
+    border-bottom:1px solid var(--gold);
+    white-space:nowrap;
+  }
+  tbody td{
+    padding:12px clamp(12px, 4vw, 18px);
+    border-bottom:1px solid var(--line);
+    color:#d8d4c8;
+    line-height:1.5;
+    vertical-align:top;
+  }
+  tbody tr:last-child td{ border-bottom:none; }
+  tbody td.num{ color:var(--gold-bright); white-space:nowrap; }
+  table .note{
+    display:block;
+    padding:12px clamp(12px, 4vw, 18px) 18px;
+    font-size:12px;
+    font-style:italic;
+    color:var(--ink-faint);
+  }
+
+  /* ---------- Amino acid diagram ---------- */
+  .diagram{
+    display:flex;
+    justify-content:center;
+    margin:8px 0 34px;
+    padding:30px clamp(12px, 5vw, 20px);
+    border:1px solid var(--line);
+  }
+  .diagram svg{ color:var(--ink-dim); }
+  .diagram-caption{
+    text-align:center;
+    font-size:12px;
+    color:var(--ink-faint);
+    margin-top:-22px;
+    margin-bottom:30px;
+    font-style:italic;
+  }
+
+  /* ---------- References ---------- */
+  .references{
+    margin-top:9vh;
+    padding-top:9vh;
+    border-top:1px solid var(--line);
+  }
+  .references ol{
+    margin:0;
+    padding:0;
+    list-style:none;
+    counter-reset:refs;
+  }
+  .references li{
+    counter-increment:refs;
+    position:relative;
+    padding-left:34px;
+    margin-bottom:20px;
+    font-size:0.92rem;
+    line-height:1.75;
+    color:var(--ink-dim);
+    scroll-margin-top:28px;
+  }
+  .references li::before{
+    content:counter(refs);
+    position:absolute;
+    left:0; top:0;
+    font-size:0.85rem;
+    color:var(--gold);
+  }
+  .references a{
+    color:var(--gold-bright);
+    text-decoration:none;
+    border-bottom:1px solid rgba(226,197,132,0.3);
+    word-break:break-word;
+  }
+  .references a:hover{ border-color:var(--gold-bright); }
+  .references li:target{ color:var(--ink); }
+  .references li:target::before{ color:var(--gold-bright); }
+
+  /* ---------- Footer ---------- */
+  footer.site-footer{
+    position:relative;
+    z-index:3;
+    max-width:680px;
+    margin:0 auto;
+    padding:0 clamp(14px, 6vw, 28px) 12vh;
+    text-align:center;
+  }
+  footer.site-footer .fleur{
+    display:block;
+    margin:0 auto 14px;
+    width:16px; height:16px;
+    color:var(--gold);
+  }
+  footer.site-footer .foot-text{
+    font-size:11.5px;
+    letter-spacing:0.14em;
+    color:var(--ink-faint);
+  }
+  footer.site-footer .home-link{
+    display:inline-block;
+    margin-top:18px;
+    font-size:12.5px;
+    letter-spacing:0.1em;
+    color:var(--ink-dim);
+    text-decoration:none;
+    border-bottom:1px solid var(--line);
+    padding-bottom:2px;
+    transition:color 0.3s ease, border-color 0.3s ease;
+  }
+  footer.site-footer .home-link:hover{ color:var(--gold-bright); border-color:var(--gold-bright); }
+
+  /* ---------- Reveal on scroll ---------- */
+  .reveal{
+    opacity:0;
+    transform:translateY(16px);
+    transition:opacity 0.8s cubic-bezier(.2,.7,.2,1), transform 0.8s cubic-bezier(.2,.7,.2,1);
+  }
+  .reveal.in{
+    opacity:1;
+    transform:translateY(0);
+  }
+
+  /* Drop cap on the very first paragraph */
+  .drop p::first-letter{
+    float:left;
+    font-size:3.6em;
+    line-height:0.8;
+    padding:0.08em 0.08em 0 0;
+    font-weight:700;
+    color:var(--gold);
+  }
+
+  @media (max-width:640px){
+    .article-head{ padding:5vh clamp(14px, 5vw, 20px) 0; }
+    .abstract, .toc{ padding:22px clamp(14px, 5vw, 22px); }
+    .toc ol{ columns:1; }
+    .article-body{ padding:6vh clamp(14px, 5vw, 20px) 3vh; }
+    .chapter{ margin-top:7vh; padding-top:7vh; }
+    blockquote.pull{ padding-left:16px; margin:32px auto; }
+    thead th, tbody td{ padding:10px 12px; font-size:0.86rem; }
+    h1.title{ letter-spacing:0; }
+    .tagline{ line-height:1.85; }
+  }
+
+  @media (max-width:400px){
+    .topbar{ padding-top:22px; }
+    .article-head{ padding-top:4vh; }
+    .kicker-row{ font-size:11px; gap:8px; }
+    .abstract, .toc{ padding:18px 14px; }
+    .abstract .label, .toc .label{ letter-spacing:0.2em; }
+    .article-body{ padding:5vh 14px 2.5vh; }
+    .chapter-num{ font-size:11px; }
+    p, .article-body ul li, .article-body ol.plain li{ font-size:0.98rem; }
+    thead th, tbody td{ padding:9px 10px; font-size:0.8rem; }
+    table{ min-width:340px; }
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    *{
+      animation-duration:0.01ms !important;
+      animation-delay:0s !important;
+      transition-duration:0.01ms !important;
+    }
+    .reveal{ opacity:1; transform:none; }
+  }
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <a class="back-link" href="/">
+    <span class="chevron">&#8249;</span> Aswin Paudel — Essays &amp; Long-Form Writing
+  </a>
+</div>
+
+<main>
+
+  <header class="article-head">
+    <div class="kicker-row">
+      <span>Nutrition &amp; Public Health</span>
+      <span class="dot"></span>
+      <span>September 9, 2026</span>
+      <span class="dot"></span>
+      <span>~28 min read</span>
+    </div>
+
+    <h1 class="title">The Invisible Deficiency: Protein Quality, Distribution, and Adequacy in Nepali Diets</h1>
+
+    <p class="byline">Written by <span class="name">Aswin Paudel</span></p>
+
+    <p class="tagline">
+      Calorie intake decides your weight. Macronutrients decide your shape.
+      Micronutrients decide how you feel. Hydration decides how you perform.
+    </p>
+
+    <div class="head-rule"></div>
+  </header>
+
+  <section class="abstract reveal">
+    <div class="label">Abstract</div>
+    <p>Protein is the only macronutrient the body cannot hold in a dedicated reserve, and protein that is not used within roughly a day is broken down and excreted. Intake must therefore be continuous, and inadequacy is met by breaking down the body's own tissue rather than by drawing on a store. This review examines protein nutrition from that starting point, with particular attention to Nepal and the wider South Asian context. It covers the structure and classification of amino acids, the meaning of protein completeness at the level of foods rather than molecules, requirement estimates across activity levels and life stages, and the hierarchy by which the body allocates amino acids when supply is limited. It then distinguishes protein quantity from protein quality, drawing on digestibility data and the PDCAAS and DIAAS scoring systems, and reviews the causes of deficiency in cereal-dominated food systems.</p>
+    <p>Three main findings appear repeatedly throughout the research. Usable protein is consistently lower than measured intake in diets built on rice and wheat, which are limited in lysine and less digestible than legumes, dairy, eggs or meat. Distribution across the day influences utilization independently of the daily total. And because the body protects vital organ function first, deficiency can persist for years without obvious clinical signs or abnormal routine laboratory results. Evidence on early childhood supplementation and on age-related muscle loss indicates that the consequences are concentrated at the beginning and end of life. The review concludes with household- and policy-level recommendations, most of which reinforce existing culinary practice rather than replacing it.</p>
+  </section>
+
+  <nav class="toc reveal" aria-label="Table of contents">
+    <div class="label">Contents</div>
+    <ol>
+      <li><a href="#introduction">Introduction</a></li>
+      <li><a href="#amino-acids">Amino Acids: The Building Blocks</a></li>
+      <li><a href="#how-much">How Much Protein Does a Person Need?</a></li>
+      <li><a href="#why-necessary">Why Is Protein Necessary?</a></li>
+      <li><a href="#priority-ladder">The Body's Protein Priority Ladder</a></li>
+      <li><a href="#quality">Protein Quality: Digestibility and Absorbability</a></li>
+      <li><a href="#why-deficiency">Why Protein Deficiency Occurs</a></li>
+      <li><a href="#nepal-foods">Dietary Protein Content of Foods Consumed in Nepal</a></li>
+      <li><a href="#recommendations">Recommendations for Practice and Policy</a></li>
+      <li><a href="#what-not-to-do">What Not to Do</a></li>
+      <li><a href="#research">Research Behind the Claims</a></li>
+      <li><a href="#conclusion">Conclusion</a></li>
+      <li><a href="#reference">Reference</a></li>
+    </ol>
+  </nav>
+
+  <article class="article-body">
+
+    <!-- ===================== INTRODUCTION ===================== -->
+    <section class="chapter reveal" id="introduction">
+      <span class="chapter-num">I.</span>
+      <h2>Introduction</h2>
+
+      <div class="drop">
+        <p>Most people can name the three macronutrients: carbohydrate, fat, and protein. Fewer can say what protein does, and fewer still know how much they need. Carbohydrates and fat are mainly fuel. Protein is different. It is the material the body is built from, and it is the only macronutrient the body cannot store as a dedicated reserve. There is a fat store, and there is a small carbohydrate store in muscle and liver, but there is no protein tank. What is not used within roughly a day is broken down and the nitrogen excreted. This one fact drives almost everything else in this review: protein has to be supplied continuously, and a shortfall shows up as a slow erosion of the body itself rather than as an obvious deficiency disease.</p>
+      </div>
+
+      <p>Protein is made of small units called amino acids joined into long chains. There are twenty amino acids used in human proteins. Nine of them are described as essential, meaning the body has no pathway to manufacture them and must obtain them from food. The other eleven can be built internally from other molecules. The sequence in which amino acids are arranged determines how the finished chain folds, and the fold determines the job. Change one amino acid in the sequence and the protein may fold differently and stop working, which is the basis of several inherited diseases.</p>
+
+      <p>The range of work that proteins do is wider than most people expect. They form the structural fabric of skin, hair, nails, tendons, and muscle. They act as enzymes, the catalysts that make digestion, energy production, and detoxification possible at body temperature. They form antibodies, which identify and neutralize pathogens. Several hormones, including insulin, are proteins. Hemoglobin, the molecule that carries oxygen in red blood cells, is a protein. Albumin, which holds fluid inside blood vessels and ferries nutrients and drugs around the body, is a protein. Actin and myosin, the two filaments that slide past each other every time muscle contracts, are proteins. A person who is short of protein is not simply "not building muscle"; they are running every one of these systems on a restricted budget.</p>
+    </section>
+
+    <!-- ===================== AMINO ACIDS ===================== -->
+    <section class="chapter reveal" id="amino-acids">
+      <span class="chapter-num">II.</span>
+      <h2>Amino Acids: The Building Blocks</h2>
+
+      <p>An amino acid is a small organic molecule. Every one of the twenty has the same basic frame: a central carbon atom, called the alpha carbon, with four things attached to it.</p>
+
+      <div class="diagram">
+        <svg width="260" height="150" viewBox="0 0 260 150" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="Generic amino acid structure diagram">
+          <text x="18" y="80" font-family="Merriweather, Georgia, serif" font-size="20" fill="currentColor">*R</text>
+          <line x1="48" y1="74" x2="98" y2="74" stroke="currentColor" stroke-width="1"/>
+          <circle cx="112" cy="74" r="13" fill="none" stroke="currentColor" stroke-width="1"/>
+          <text x="105" y="80" font-family="Merriweather, Georgia, serif" font-size="16" fill="currentColor">C</text>
+          <line x1="112" y1="61" x2="112" y2="30" stroke="currentColor" stroke-width="1"/>
+          <text x="106" y="24" font-family="Merriweather, Georgia, serif" font-size="16" fill="currentColor">H</text>
+          <line x1="112" y1="87" x2="112" y2="118" stroke="currentColor" stroke-width="1"/>
+          <text x="94" y="136" font-family="Merriweather, Georgia, serif" font-size="16" fill="currentColor">NH&#8322;</text>
+          <line x1="125" y1="74" x2="175" y2="74" stroke="currentColor" stroke-width="1"/>
+          <text x="180" y="80" font-family="Merriweather, Georgia, serif" font-size="16" fill="currentColor">COOH</text>
+        </svg>
+      </div>
+      <p class="diagram-caption">The shared frame of all twenty amino acids: an amino group, a carboxyl group, a hydrogen atom, and a variable side chain (R).</p>
+
+      <ul>
+        <li>An amino group (&ndash;NH&#8322;), which contains nitrogen. This is what makes protein the only macronutrient that supplies nitrogen to the body.</li>
+        <li>A carboxyl group (&ndash;COOH), which is acidic.</li>
+        <li>A single hydrogen atom (&ndash;H).</li>
+        <li>A side chain, written as the R group. This is the only part that differs between the twenty amino acids, and it is what gives each one its distinct character.</li>
+      </ul>
+
+      <p>The general chemical formula is written R&ndash;CH(NH&#8322;)&ndash;COOH.</p>
+
+      <h3 id="essential">Essential, Non-Essential, and Conditionally Essential</h3>
+
+      <p>Nutritionally, the twenty amino acids fall into three groups. The classification has nothing to do with importance. All twenty are essential, because a protein missing any one of them cannot be built. The classification is about origin: whether the body can make the amino acid itself, or whether it must arrive in food.</p>
+
+      <div class="table-wrap">
+        <table>
+          <caption class="table-title">Amino Acid Classification</caption>
+          <thead>
+            <tr><th>Category</th><th>Count</th><th>What does it mean?</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Essential</td>
+              <td class="num">9</td>
+              <td>The body has no biochemical pathway to make these. They must come from food every day &mdash; histidine, isoleucine, leucine, lysine, methionine, phenylalanine, threonine, tryptophan, and valine.</td>
+            </tr>
+            <tr>
+              <td>Non-essential</td>
+              <td class="num">11</td>
+              <td>The body can build these internally from metabolic intermediates such as pyruvate, glutamate, and oxaloacetate. A healthy person does not need to eat them directly.</td>
+            </tr>
+            <tr>
+              <td>Conditionally essential</td>
+              <td class="num">subset of 11</td>
+              <td>Normally non-essential, but the body cannot make enough during illness, injury, surgery, severe stress, or rapid growth. Examples include arginine, cysteine, glutamine, tyrosine, proline, and glycine.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p>Arginine is the clearest example of the conditional category. A healthy adult manufactures enough arginine internally and never needs to think about it. An infant growing rapidly, a patient recovering from major surgery, or a person fighting a serious infection cannot keep up with demand, and at that point arginine must come from the diet. This is one reason protein requirements rise sharply during illness and recovery.</p>
+
+      <h3 id="all-twenty">Why No Single Protein Needs All Twenty?</h3>
+
+      <p>This is one of the most common misunderstandings in popular nutrition writing, and it is worth correcting carefully. Every protein in the human body is assembled from some combination of twenty amino acids. But an individual protein may use only a handful of them, repeated many times in a particular order. It does not need to contain all twenty, and most do not.</p>
+
+      <p>The twenty amino acids work like the twenty-six letters of the alphabet. The word "cat" uses three letters. The word "encyclopedia" uses more, but still not all twenty-six. No individual word needs the full alphabet, and yet every word in the language is written from that same set of letters. Proteins work the same way. Each protein is a "word" spelled in amino acids, and it uses whichever ones its job requires.</p>
+
+      <p>The human body contains an estimated twenty thousand or more distinct proteins: enzymes, hormones, transport molecules, structural fibres, antibodies, and receptors. Every one of them is a unique sequence drawn from the same pool of twenty amino acids, in the same way that millions of books are written from the same twenty-six letters, differing only in arrangement.</p>
+
+      <h3 id="complete-protein">What Complete Protein Really Means?</h3>
+
+      <p>Because a single protein does not need all twenty amino acids, the term "complete protein" cannot refer to a protein molecule. It refers to food. A complete protein food is one that supplies all nine essential amino acids in adequate amounts and proportions. The reasoning is simple. The body needs a steady supply of all nine essentials in order to build whatever proteins it happens to need at that moment. If even one essential amino acid is in short supply, protein synthesis stalls at that point, however abundant the other eight are.</p>
+
+      <h3 id="where-complete-protein">Where Complete Protein Comes From</h3>
+
+      <p>Foods differ in whether they supply all nine essentials in adequate proportions.</p>
+
+      <p><strong>Animal sources, complete on their own.</strong> Eggs, chicken, fish, beef, mutton, goat, milk, curd, paneer, and cheese all supply the full essential amino acid profile in proportions close to what the human body needs. This is unsurprising: animal tissue is built from the same amino acids in broadly similar ratios to human tissue.</p>
+
+      <p><strong>Plant sources that are complete on their own.</strong> A smaller set of plant foods is also complete. Soybeans and their products (tofu, edamame, soya chunks), quinoa, buckwheat, chia seeds, hemp seeds, and amaranth all provide all nine essentials in usable amounts. Buckwheat and amaranth are particularly relevant in Nepal and the Indian Himalaya, where they are already traditional foods.</p>
+
+      <p><strong>Plant sources that need pairing.</strong> Most legumes (lentils, chickpeas, kidney beans, peas) are low in methionine, and most cereal grains (rice, wheat, maize, barley) are low in lysine. Neither is complete alone. Eaten together, each supplies what the other lacks, and the combination provides all nine essentials. This principle is called protein complementation.</p>
+
+      <p>This is not a new discovery that dietitians invented. It is what almost every traditional cuisine already does. Dal with rice or roti in India, dal bhat in Nepal, rice and beans in Latin America, hummus and pita in the Levant, and beans on toast in Britain are all the same nutritional idea arrived at independently. Two incomplete proteins, eaten in the same meal or across the same day, add up to one complete one.</p>
+
+      <p>Research has established that the pairing does not need to happen within a single meal. The body maintains a short-term pool of free amino acids, so foods eaten across the same day complement each other perfectly well. A person who eats roti at lunch and dal at dinner is doing the same thing nutritionally as a person who eats them together.</p>
+    </section>
+
+    <!-- ===================== HOW MUCH PROTEIN ===================== -->
+    <section class="chapter reveal" id="how-much">
+      <span class="chapter-num">III.</span>
+      <h2>How Much Protein Does a Person Need?</h2>
+
+      <p>Protein needs depend mainly on four things: body weight, age, activity level, and health status. There is no single number that fits everybody, which is one reason the topic causes so much confusion. What follows moves from the official minimum to more realistic working targets.</p>
+
+      <p>The Recommended Dietary Allowance (RDA) for protein is 0.8 grams per kilogram of body weight per day in most international guidelines <a class="cite-link" href="#ref-harvard">(Harvard Health, 2023)</a>. The Indian Council of Medical Research&ndash;National Institute of Nutrition sets the figure at 0.83 grams per kilogram per day for healthy adults, derived from median obligatory nitrogen losses rather than from digestibility corrections <a class="cite-link" href="#ref-icmr">(ICMR&ndash;NIN, 2020)</a>.</p>
+
+      <p>It is important to understand what this number represents. The RDA is the amount that prevents deficiency in roughly 97.5% of a healthy population. It is a floor, not a target. It is the nutritional equivalent of the minimum balance a bank requires to keep an account open, not the amount a person would want in it. It was never intended to describe an optimal intake for muscle maintenance, healthy ageing, recovery from illness, or an active life.</p>
+
+      <p>A second point is specific to South Asia. The ICMR&ndash;NIN expert group notes that for populations consuming cereal-based diets in which protein quality is lower, the requirement rises to approximately 1&nbsp;g/kg per day <a class="cite-link" href="#ref-icmr">(ICMR&ndash;NIN, 2020)</a>. This is a significant adjustment, and it means the commonly quoted 0.8 figure understates the requirement for a typical Indian or Nepali vegetarian diet.</p>
+
+      <div class="table-wrap">
+        <table>
+          <caption class="table-title">Daily Protein Target by Body Weight</caption>
+          <thead>
+            <tr><th>Body weight</th><th>0.8&nbsp;g/kg &mdash; RDA minimum</th><th>1.0&nbsp;g/kg &mdash; cereal-based diet</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>50&nbsp;kg (110&nbsp;lb)</td><td class="num">~40&nbsp;g</td><td class="num">~50&nbsp;g</td></tr>
+            <tr><td>60&nbsp;kg (132&nbsp;lb)</td><td class="num">~48&nbsp;g</td><td class="num">~60&nbsp;g</td></tr>
+            <tr><td>70&nbsp;kg (154&nbsp;lb)</td><td class="num">~56&nbsp;g</td><td class="num">~70&nbsp;g</td></tr>
+            <tr><td>80&nbsp;kg (176&nbsp;lb)</td><td class="num">~64&nbsp;g</td><td class="num">~80&nbsp;g</td></tr>
+            <tr><td>90&nbsp;kg (198&nbsp;lb)</td><td class="num">~72&nbsp;g</td><td class="num">~90&nbsp;g</td></tr>
+          </tbody>
+        </table>
+        <span class="note">Baseline column calculated at 0.8&nbsp;g/kg/day. Adjusted column reflects the ICMR&ndash;NIN (2020) guidance that cereal-based diets with lower protein quality require approximately 1&nbsp;g/kg/day.</span>
+      </div>
+
+      <h3 id="by-activity">Requirements by Activity Level and Life Stage</h3>
+
+      <p>For most people, the RDA is the wrong reference point. The following table gives working ranges that reflect activity, age, and physiological state.</p>
+
+      <div class="table-wrap">
+        <table>
+          <caption class="table-title">Protein Requirements by Activity Level and Life Stage</caption>
+          <thead>
+            <tr><th>Category</th><th>Protein (g/kg/day)</th><th>Notes</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Sedentary adult</td><td class="num">0.8&ndash;1.0</td><td>Desk job, minimal deliberate activity.</td></tr>
+            <tr><td>Moderately active adult</td><td class="num">1.0&ndash;1.3</td><td>Regular walking, household physical work, light exercise.</td></tr>
+            <tr><td>Strength training / athletes</td><td class="num">1.4&ndash;2.0</td><td>Building or maintaining muscle mass under a training load.</td></tr>
+            <tr><td>Endurance athletes</td><td class="num">1.2&ndash;1.6</td><td>Runners, cyclists, long-distance trekkers.</td></tr>
+            <tr><td>Weight loss (preserving muscle)</td><td class="num">1.2&ndash;1.6</td><td>Higher protein retains lean mass during a calorie deficit and increases fullness.</td></tr>
+            <tr><td>Older adults (50+)</td><td class="num">1.0&ndash;1.2</td><td>Counteracts age-related muscle loss (sarcopenia).</td></tr>
+            <tr><td>Older adults with illness</td><td class="num">1.2&ndash;1.5</td><td>Acute or chronic disease raises requirements further.</td></tr>
+            <tr><td>Pregnancy</td><td class="num">+25&nbsp;g/day</td><td>Particularly in the second and third trimesters.</td></tr>
+            <tr><td>Lactation</td><td class="num">+15&ndash;20&nbsp;g/day</td><td>Supports milk production.</td></tr>
+            <tr><td>Growing children and teens</td><td class="num">1.0&ndash;1.5</td><td>Requirements per kilogram are higher than in adults and vary with age.</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3 id="spreading">Spreading Protein Across the Day</h3>
+
+      <p>Total daily protein matters most, but distribution matters more than was once assumed. Muscle protein synthesis responds to a threshold dose. Below that dose, the response is weak; above it, the extra amino acids are largely diverted to other uses or oxidized for energy.</p>
+
+      <p>Moore and colleagues found that muscle protein synthesis is maximally stimulated at approximately 0.4 grams of high-quality protein per kilogram of body weight per meal in older adults, with a lower threshold in younger adults <a class="cite-link" href="#ref-moore">(Moore et al., 2014)</a>. Schoenfeld and Aragon concluded that targeting roughly 0.4&nbsp;g/kg per meal across at least four meals is a sensible approach for those seeking to maximize muscle accretion <a class="cite-link" href="#ref-schoenfeld">(Schoenfeld &amp; Aragon, 2022)</a>. In practical terms, this translates to roughly 20 to 40 grams of protein per meal for most adults.</p>
+
+      <p>Distribution also has a measurable effect. Mamerow et al. fed healthy adults the same total daily protein in two patterns: evenly spread across three meals or skewed towards dinner. Twenty-four-hour muscle protein synthesis was 25% higher in the evenly distributed group, and the difference persisted after a week of adaptation. The total was identical; only the timing differed <a class="cite-link" href="#ref-mamerow">(Mamerow et al., 2014)</a>.</p>
+
+      <p>The typical Indian and Nepali eating pattern is heavily skewed. Breakfast is often tea with biscuits, poha, or plain paratha, contributing almost no protein. Lunch and dinner carry nearly all of it. Even a person hitting their daily total is therefore getting a weaker biological response than someone eating the same amount spread across the day. Adding a protein source to breakfast &mdash; two eggs, a bowl of curd, a glass of milk, sattu, or roasted chana &mdash; is frequently the single highest-yield change a person can make, and it costs very little.</p>
+    </section>
+
+    <!-- ===================== WHY IS PROTEIN NECESSARY ===================== -->
+    <section class="chapter reveal" id="why-necessary">
+      <span class="chapter-num">IV.</span>
+      <h2>Why Is Protein Necessary?</h2>
+
+      <p>Protein is involved in so many systems that a shortfall degrades all of them at once, quietly and simultaneously.</p>
+
+      <h3>Structure: The Body Is Physically Built From Protein</h3>
+      <p>After water, protein is the most abundant substance in the human body. Skin, hair, nails, tendons, ligaments, cartilage, bone matrix, blood vessel walls, and muscle are all protein structures. Collagen alone accounts for roughly a third of all protein in the body and forms the scaffold that holds skin taut, joints stable, and blood vessels flexible.</p>
+      <p>Critically, these structures are not built once and left alone. They are continuously demolished and rebuilt in a process called protein turnover. The lining of the small intestine is replaced every three to five days. Red blood cells last about 120 days. Even skeletal muscle, which appears static, is being broken down and resynthesized constantly. Adequate protein intake is not just about building new tissue &mdash; it is about maintaining the body's tissues, which are constantly being broken down and rebuilt.</p>
+
+      <h3>Enzymes: Nothing in the Body Happens Without Them</h3>
+      <p>Every enzyme in the human body is a protein. Enzymes are catalysts that allow chemical reactions to proceed at body temperature and at useful speed. Without them, digesting a meal would take years rather than hours, because the reactions would simply be too slow. Amylase breaks down starch, protease breaks down protein, lipase breaks down fat. Thousands of others run energy production, hormone synthesis, DNA repair, and the liver's detoxification of drugs and metabolic waste.</p>
+      <p>This is why enzyme production sits at the very top of the body's protein priority ladder. If enzyme synthesis falters, every other process fails downstream of it, including the digestion of the next meal.</p>
+
+      <h3>Transport and Storage</h3>
+      <ul>
+        <li>Hemoglobin carries oxygen from the lungs to every tissue and returns carbon dioxide. Inadequate protein contributes to anaemia independently of iron status.</li>
+        <li>Albumin transports fatty acids, calcium, hormones, bilirubin, and many medicines through the bloodstream.</li>
+        <li>Transferrin carries iron. Ferritin stores it. Both are proteins, which means iron metabolism itself depends on protein adequacy.</li>
+        <li>Membrane transporters move glucose, amino acids, and minerals across cell membranes.</li>
+      </ul>
+
+      <h3>Immunity: Every Antibody Is a Protein</h3>
+      <p>Antibodies (immunoglobulins) are proteins. So are the complement system, cytokines, and the receptors on white blood cells that recognise pathogens. When protein is inadequate, the immune system is directly weakened.</p>
+
+      <blockquote class="pull"><p>Low protein weakens immunity. Weakened immunity leads to more frequent infections. Infection raises protein requirements sharply &mdash; and a person may recover from each infection with a greater protein deficit than before.</p></blockquote>
+
+      <p>The consequence is a self-reinforcing cycle that is central to malnutrition in low-income settings. In the case of diarrheal illness, the body may lose nutrients directly, while poor absorption and reduced food intake can make the problem worse, making a person more vulnerable to the next infection.</p>
+
+      <h3>Hormones and Chemical Signaling</h3>
+      <p>Many hormones are proteins or are built from amino acids. Insulin, which controls blood glucose, is a protein. Growth hormone is protein. Thyroid hormones are built from the amino acid tyrosine and iodine, which control the body's entire metabolic rate. Serotonin, which regulates mood, sleep, and appetite, is synthesized from tryptophan. Dopamine, involved in motivation and reward, is synthesized from tyrosine and phenylalanine.</p>
+      <p>This gives protein a direct connection to mood, sleep quality, and motivation that is rarely discussed. A person whose diet lacks tryptophan has less raw material for serotonin. The relationship is not simple or one-to-one, and protein is not a treatment for depression, but the raw materials for the brain's signaling chemistry come from dietary protein and nowhere else.</p>
+
+      <h3>Fluid Balance and Blood Chemistry</h3>
+      <p>Albumin is produced by the liver, and it is the most abundant protein in blood plasma. It exerts oncotic pressure, which holds water inside blood vessels rather than allowing it to leak into surrounding tissue. When albumin falls below a critical level, fluid seeps out and accumulates in tissue as oedema.</p>
+      <p>This is the mechanism behind one of the most visually striking signs of severe protein malnutrition: a child with thin limbs but a swollen belly and puffy feet. To an untrained observer the child may not look starved &mdash; the swelling is a direct result of severe protein deficiency, rather than evidence that the person is getting enough protein. Clotting factors are also proteins, so severe protein deficiency can affect the body's ability to stop bleeding; bruising may become more common, and wounds may take longer to stop bleeding.</p>
+
+      <h3>Appetite Control and Body Weight</h3>
+      <p>Protein is the most filling of the three macronutrients. It tends to keep you feeling full for longer than carbohydrates or fat by affecting gut hormones that send signals of fullness to the brain <a class="cite-link" href="#ref-leidy2015">(Leidy et al., 2015)</a>.</p>
+      <p>It also has the highest thermic effect of food, meaning a larger share of its calories is spent on digesting and metabolizing it. Higher-protein diets in the range of 1.2 to 1.6 grams per kilogram per day, with roughly 25 to 30 grams per meal, are associated with improved appetite control and better body weight management compared with lower-protein diets <a class="cite-link" href="#ref-leidy2015">(Leidy et al., 2015)</a>. Leidy et al. found that among women following a matched calorie deficit, the higher-protein group lost roughly half as much lean body mass as the normal-protein group and reported less decline in satiety <a class="cite-link" href="#ref-leidy2012">(Leidy, 2012)</a>.</p>
+
+      <h3>Blood Sugar Stability</h3>
+      <p>Protein slows gastric emptying and blunts the rise in blood glucose when eaten alongside carbohydrates. A meal of rice alone raises blood glucose quickly and sharply. The same rice eaten with dal, curd, and vegetables produces a slower, flatter rise.</p>
+      <p>This is particularly relevant in South Asia, which carries one of the world's heaviest burdens of type 2 diabetes, and where the staple diet is carbohydrate dominant. Adding protein to a meal is not merely a matter of building muscle; it changes how the entire meal behaves metabolically.</p>
+
+      <h3>Healthy Ageing and the Prevention of Sarcopenia</h3>
+      <p>From around the age of thirty, adults gradually begin to lose muscle mass. When this loss becomes significant, it is known as sarcopenia. In older adults, sarcopenia can contribute to weakness, frailty, falls, fractures, loss of independence, and a higher risk of death.</p>
+      <p>Two factors combine to make this worse than it needs to be. First, older muscle responds less strongly to a given dose of protein, a phenomenon called anabolic resistance, so more protein is required to produce the same effect <a class="cite-link" href="#ref-moore">(Moore et al., 2014)</a>. Second, older adults often eat less overall, because of reduced appetite, dental problems, difficulty chewing meat, or living alone. The PROT-AGE Study Group therefore recommends at least 1.0 to 1.2 grams per kilogram per day for people over 65, rising to 1.2 to 1.5 for those with acute or chronic illness, alongside both endurance and resistance exercise at individually tolerable levels <a class="cite-link" href="#ref-bauer">(Bauer et al., 2013)</a>.</p>
+
+      <blockquote class="pull"><p>Whether a person aged 75 can climb their own stairs, carry a bucket of water, or get up unaided after a fall is largely determined by decisions made in their forties, fifties, and sixties about protein and physical activity.</p></blockquote>
+
+      <p>Muscle built earlier is a buffer that is drawn down slowly over decades. Someone who arrives at sixty with little muscle has no buffer at all. In households where an older parent is becoming visibly frail, protein at every meal is one of the few genuinely modifiable factors.</p>
+
+      <h3>Growth, Pregnancy, and Brain Development</h3>
+      <p>Protein requirements per kilogram of body weight are highest in infancy and childhood, when the entire body is being constructed. The first thousand days, from conception to a child's second birthday, are especially consequential, because this is when the brain and body establish their growth trajectory.</p>
+      <p>Inadequate protein and energy during this window cause stunting &mdash; low height for age. Stunting is not simply about height. It is associated with impaired cognitive development, reduced school performance, lower adult earning capacity, and increased risk of chronic disease in adulthood. Critically, its effects on cognitive development are largely irreversible after early childhood, which is why the condition receives so much attention in public health. A child who is stunted at age two does not fully recover the lost potential even if the diet improves at age six.</p>
+      <p>Pregnancy raises requirements substantially, with the ICMR recommending an additional allowance above baseline, concentrated in the second and third trimesters, when foetal tissue accrual is fastest. Lactation adds further demand.</p>
+    </section>
+
+    <!-- ===================== PRIORITY LADDER ===================== -->
+    <section class="chapter reveal" id="priority-ladder">
+      <span class="chapter-num">V.</span>
+      <h2>The Body's Protein Priority Ladder</h2>
+
+      <p>When protein and amino acid supply is limited, the body does not distribute what it has evenly. It follows a strict survival-based hierarchy, funding the functions needed to stay alive first and sacrificing everything else. Understanding this hierarchy explains why the symptoms of inadequate protein intake appear in the order they do, and why they are so easy to miss.</p>
+
+      <ol class="plain">
+        <li><strong>Vital organ function and enzymes.</strong> Protein that keeps heart, liver, kidney, brain, lungs, and immune systems running. The body sacrifices nearly everything else before compromising this tier.</li>
+        <li><strong>Blood proteins and hormones.</strong> Albumin, clotting factors, and peptide hormones such as insulin. When albumin runs short, fluid leaks from blood vessels into surrounding tissues &mdash; the mechanism behind the swollen belly and puffy feet seen in severe protein malnutrition.</li>
+        <li><strong>Structural and connective tissue maintenance.</strong> Enough collagen turnover in skin, tendons, and ligaments to prevent breakdown, though not necessarily enough to repair damage or build new tissue.</li>
+        <li><strong>Skeletal muscle.</strong> This ranks considerably lower than most people assume. The body actively breaks existing muscle down (catabolism) to release amino acids for the higher-priority functions above. Muscle is treated as an amino acid reserve bank, and the body makes withdrawals from it without hesitation.</li>
+        <li><strong>Growth and non-urgent repair.</strong> Building new muscle (hypertrophy), hair and nail growth, and non-urgent wound healing. These are the first functions sacrificed when protein is scarce &mdash; hair thinning, brittle nails, and slow-healing cuts are among the earliest visible signs of a shortfall.</li>
+        <li><strong>Energy production, as a last resort.</strong> Amino acids are not the body's preferred fuel. Using them for energy is wasteful: the nitrogen removed during deamination must be converted to urea and excreted by the kidneys, at a cost of water and energy.</li>
+      </ol>
+
+      <h3 id="why-hierarchy">Why the Hierarchy Exists</h3>
+
+      <p>The order makes evolutionary sense. An organism can survive with reduced muscle mass. It cannot survive with a failing heart, liver, or immune system. When supply is short, the body's regulatory hormones &mdash; cortisol prominent among them &mdash; actively signal muscle breakdown to release amino acids upward through the priority chain. This happens during:</p>
+
+      <ul>
+        <li>Prolonged fasting or starvation</li>
+        <li>Severe illness, infection, injury, burns, or surgery</li>
+        <li>Chronic inadequate protein intake</li>
+        <li>Extreme calorie restriction, including aggressive crash dieting</li>
+      </ul>
+
+      <p>Because the body protects the critical systems so effectively, a person can be meaningfully protein-deficient for years while their blood tests look normal and they feel merely "a bit tired." The deficiency is being paid for by muscle, hair, nails, immunity, and recovery speed. There is no alarm. This is precisely why protein deficiency in South Asia has been described as invisible, and why it persists in populations that do not consider themselves undernourished at all.</p>
+    </section>
+
+    <!-- ===================== PROTEIN QUALITY ===================== -->
+    <section class="chapter reveal" id="quality">
+      <span class="chapter-num">VI.</span>
+      <h2>Protein Quality: Digestibility and Absorbability</h2>
+
+      <p>Two people can eat 60 grams of protein and end up with very different amounts available to their bodies. The gap is explained by two related but distinct concepts: digestibility and absorbability. Together they determine how much of what is eaten is genuinely usable.</p>
+
+      <h3 id="digestibility">Digestibility</h3>
+      <p>Digestibility is the proportion of ingested protein that is broken down into absorbable units &mdash; free amino acids and short peptides &mdash; in the digestive tract. It is expressed as a percentage. Digestibility depends on four main factors:</p>
+
+      <ul>
+        <li><strong>Protein source.</strong> Animal proteins digest more completely than most plant proteins.</li>
+        <li><strong>Anti-nutritional factors.</strong> Fiber, phytates, tannins, and trypsin inhibitors common in raw legumes and whole grains interfere with digestive enzymes.</li>
+        <li><strong>Food processing.</strong> Cooking, soaking, sprouting, and fermenting all improve digestibility substantially.</li>
+        <li><strong>Protein structure.</strong> Some proteins are physically more resistant to enzymatic breakdown than others.</li>
+      </ul>
+
+      <div class="table-wrap">
+        <table>
+          <caption class="table-title">Typical Protein Digestibility by Food</caption>
+          <thead><tr><th>Food</th><th>Digestibility</th><th>Comment</th></tr></thead>
+          <tbody>
+            <tr><td>Egg</td><td class="num">~97%</td><td>The reference standard for protein digestibility.</td></tr>
+            <tr><td>Milk and dairy</td><td class="num">~95%</td><td>Includes curd, paneer, and cheese.</td></tr>
+            <tr><td>Meat, fish, poultry</td><td class="num">~94%</td><td>Consistently high across species.</td></tr>
+            <tr><td>Soy, processed (tofu, soya chunks)</td><td class="num">~92&ndash;95%</td><td>Processing removes most anti-nutrients.</td></tr>
+            <tr><td>Rice</td><td class="num">~88%</td><td>Good digestibility but low in lysine.</td></tr>
+            <tr><td>Whole wheat</td><td class="num">~86%</td><td>Bran and phytates reduce digestibility somewhat.</td></tr>
+            <tr><td>Peanuts</td><td class="num">~85%</td><td>Roasting helps.</td></tr>
+            <tr><td>Legumes (dal, beans, lentils), cooked</td><td class="num">~78&ndash;85%</td><td>Soaking and pressure-cooking raise this.</td></tr>
+            <tr><td>Raw or unprocessed legumes</td><td class="num">~70% or lower</td><td>Trypsin inhibitors are still active.</td></tr>
+          </tbody>
+        </table>
+        <span class="note">Values are approximate and vary with variety, growing conditions, and preparation method.</span>
+      </div>
+
+      <p><strong>Why does animal protein digest better?</strong> Animal protein contains no fiber and none of the compounds that block digestive enzymes. Plant proteins, by contrast, are frequently enclosed within cellulose cell walls that resist breakdown, and they carry phytic acid and trypsin inhibitors that directly interfere with the enzymes trying to digest them. Crucially, this is not a fixed disadvantage &mdash; cooking, soaking, sprouting, and fermenting substantially reduce these effects.</p>
+
+      <h3 id="absorbability">Absorbability</h3>
+      <p>Once protein has been digested into amino acids and short peptides, absorption refers to how efficiently these are transported across the intestinal wall into the bloodstream. Absorption depends on:</p>
+
+      <ul>
+        <li><strong>Amino acid transporters.</strong> The small intestine has specific transport channels, and different amino acids compete for the same channels &mdash; one reason large doses of isolated single amino acids can be counterproductive.</li>
+        <li><strong>Peptide form.</strong> Di- and tri-peptides are absorbed faster than free single amino acids, via the PepT1 transporter. Whole food protein is not at a disadvantage here.</li>
+        <li><strong>Gut health.</strong> Inflammation, intestinal damage, chronic infection, and parasitic burden all impair absorption.</li>
+        <li><strong>Food matrix.</strong> Fat and fibre eaten alongside protein slow and modulate absorption speed, which is generally neutral or mildly beneficial for whole-body protein use.</li>
+      </ul>
+
+      <h3 id="scoring">Combined Scoring Systems</h3>
+      <p>Because both amino acid profile and digestibility matter, official bodies use combined scores rather than either measure alone.</p>
+
+      <p><strong>PDCAAS (Protein Digestibility-Corrected Amino Acid Score).</strong> The former gold standard, used by the FDA and WHO until approximately 2013. It combines the essential amino acid profile with faecal digestibility, capped at 1.0 (100%) &mdash; which is its main limitation, since any food scoring above 1.0 is truncated, hiding genuine quality differences at the top end.</p>
+
+      <div class="table-wrap">
+        <table>
+          <caption class="table-title">PDCAAS Values for Selected Foods</caption>
+          <thead><tr><th>Food</th><th>PDCAAS</th></tr></thead>
+          <tbody>
+            <tr><td>Whey protein / egg</td><td class="num">1.00</td></tr>
+            <tr><td>Casein / soy protein isolate</td><td class="num">1.00</td></tr>
+            <tr><td>Beef</td><td class="num">0.92</td></tr>
+            <tr><td>Chickpeas</td><td class="num">0.78</td></tr>
+            <tr><td>Rolled oats</td><td class="num">0.57</td></tr>
+            <tr><td>Peanuts</td><td class="num">0.52</td></tr>
+            <tr><td>Whole wheat</td><td class="num">0.42</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p><strong>DIAAS (Digestible Indispensable Amino Acid Score).</strong> The FAO Expert Consultation recommended in 2011 that DIAAS replace PDCAAS as the preferred method for describing protein quality, and that it be adopted in Codex food labelling and claims guidelines <a class="cite-link" href="#ref-fao">(FAO, 2011)</a>. DIAAS differs in two important ways: it measures digestibility at the end of the small intestine (the ileum) rather than from faecal output &mdash; more precise, since bacteria in the colon alter nitrogen content and distort faecal-based measurements &mdash; and it is not capped at 100%, so genuine differences between high-quality proteins remain visible.</p>
+
+      <div class="table-wrap">
+        <table>
+          <caption class="table-title">DIAAS Values for Selected Foods</caption>
+          <thead><tr><th>Food</th><th>DIAAS</th></tr></thead>
+          <tbody>
+            <tr><td>Whey protein</td><td class="num">1.09&ndash;1.20</td></tr>
+            <tr><td>Milk and egg</td><td class="num">~1.00&ndash;1.13</td></tr>
+            <tr><td>Beef</td><td class="num">~1.11</td></tr>
+            <tr><td>Soy protein isolate</td><td class="num">~0.90</td></tr>
+            <tr><td>Pea protein</td><td class="num">~0.82</td></tr>
+            <tr><td>Rice protein</td><td class="num">~0.60&ndash;0.70</td></tr>
+            <tr><td>Wheat gluten</td><td class="num">~0.25&ndash;0.40</td></tr>
+          </tbody>
+        </table>
+        <span class="note">Adapted from <a class="cite-link" href="#ref-fao">FAO (2011)</a>. Values above 1.00 indicate protein quality exceeding the reference requirement pattern.</span>
+      </div>
+
+      <h3 id="in-practice">What This Means in Practice</h3>
+      <ul>
+        <li>Animal proteins score higher on both counts. They combine high digestibility with a complete and well-proportioned essential amino acid profile.</li>
+        <li>Some plant proteins are excellent. Soy and pea protein score well and are entirely adequate as primary protein sources.</li>
+        <li>Cereals alone are the weak point. Wheat gluten scores between 0.25 and 0.40 on DIAAS, and rice protein is not much better. Because cereals supply most of the protein in Indian and Nepali diets, this single fact does a great deal of work in explaining the regional protein gap.</li>
+        <li>Combining complementary protein sources can overcome many of these limitations. Pairing cereals with legumes &mdash; rice with dal, roti with dal, or wheat with chickpeas &mdash; helps compensate for their individual amino acid limitations and improves the overall protein quality of the meal.</li>
+        <li>Traditional processing helps measurably. Soaking dal, sprouting moong, and fermenting idli and dosa batter break down anti-nutrients and raise the digestibility of plant protein. These practices are already embedded in the cuisine; the issue is that they are being abandoned as diets shift towards convenience foods.</li>
+      </ul>
+    </section>
+
+    <!-- ===================== WHY DEFICIENCY OCCURS ===================== -->
+    <section class="chapter reveal" id="why-deficiency">
+      <span class="chapter-num">VII.</span>
+      <h2>Why Protein Deficiency Occurs</h2>
+
+      <p>Protein deficiency is rarely caused by a single factor. It usually results from several converging at once.</p>
+
+      <h3>Not Eating Enough Food at All</h3>
+      <p>The simplest cause. If total calorie intake is insufficient, protein intake is almost always insufficient too, and worse, the protein that is eaten gets diverted to energy production because the body must fuel itself first. This is the mechanism behind protein-energy malnutrition in famine, extreme poverty, and food insecurity. It is also the mechanism behind severe eating disorders and aggressive crash dieting in high-income settings.</p>
+
+      <h3>Eating Enough Calories But the Wrong Foods</h3>
+      <p>This is the more common and more insidious pattern in modern South Asia. A person eats plenty of food, feels full, maintains or gains weight, and is still meaningfully short of protein. Their diet is dominated by refined cereals, sugars, and fats: rice, roti, maida, biscuits, fried snacks, sweets, and sweetened beverages. Calories are abundant; protein is not.</p>
+
+      <h3>Quantity Without Quality</h3>
+      <p>A third pattern involves consuming a respectable number of grams of protein, but from sources with low DIAAS scores and limiting amino acids. Wheat gluten scores between 0.25 and 0.40. A person deriving most of their protein from wheat and rice may hit a numerical target on paper while remaining functionally deficient in lysine, which caps the body's ability to build protein regardless of the total.</p>
+
+      <h3>Increased Requirements That Are Not Met</h3>
+      <p>Requirements rise sharply in certain states, and if intake does not rise with them, a relative deficiency develops even though nothing about the diet has changed:</p>
+      <ul>
+        <li>Growth: infancy, childhood, adolescence</li>
+        <li>Pregnancy and lactation</li>
+        <li>Recovery from surgery, burns, fractures, or major injury</li>
+        <li>Acute and chronic infection, including tuberculosis and HIV</li>
+        <li>Ageing, due to anabolic resistance</li>
+        <li>Heavy physical labor and athletic training</li>
+      </ul>
+
+      <h3>Increased Losses</h3>
+      <ul>
+        <li>Kidney disease with protein leakage into the urine (proteinuria)</li>
+        <li>Severe burns, where large amounts of protein are lost through damaged skin</li>
+        <li>Chronic diarrhoea and dysentery</li>
+        <li>Chronic blood loss, including heavy menstruation and hookworm infestation</li>
+      </ul>
+
+      <h3 id="nepal-why">Why Protein Deficiency Is Common in Nepal</h3>
+      <p>Protein deficiency in Nepal is not attributable to any single cause. The evidence reviewed below indicates that structural, geographic, social, and informational factors act concurrently, and that their relative contribution varies across the country's ecological and socioeconomic strata.</p>
+
+      <p><strong>A cereal-dominated food system.</strong> Rice is Nepal's main food, with people eating about 359 grams of it per day on average <a class="cite-link" href="#ref-rai">(Rai, 2019)</a>. In places where rice doesn't grow well, other grains like maize, millet, and buckwheat take over as the main source of both calories and protein. But grain protein has a problem: it's low in an amino acid called lysine, and it's harder for the body to absorb compared to protein from legumes, dairy, eggs, or meat <a class="cite-link" href="#ref-fao">(FAO, 2011)</a>.</p>
+
+      <p>This matters because a meal can look and feel like "enough food" while still not giving the body enough usable protein. Eating a lot of grains fills you up, but it doesn't necessarily give your body the building blocks it needs, and that gap isn't obvious unless you understand the difference between how much protein you eat and how good &mdash; how usable &mdash; that protein is.</p>
+
+      <blockquote class="pull"><p>Rice makes up most of the plate and most of the calories, but it contributes very little real protein value. It is the dal, in a much smaller portion, that carries most of the meal's protein quality.</p></blockquote>
+
+      <p>You can see this clearly in a typical dal bhat meal. Even though there is less dal (lentils) in the meal, it provides much of the protein quality. So when a household uses less dal, makes it thinner, or serves a smaller portion to save money, the protein quality of the meal can drop significantly. The meal may still look filling because rice makes people feel full, but it provides less protein and fewer essential amino acids.</p>
+
+      <p><strong>Food security policy oriented toward calorie sufficiency.</strong> Government food security measures in Nepal, including safety-net rice distribution in food-insecure districts, have prioritized the prevention of acute hunger and have been broadly successful in that objective. However, because such measures are concentrated on staple grains rather than protein-dense foods, they may inadvertently reinforce a cereal-heavy dietary pattern among the households most reliant on them. Calorie security and protein adequacy, while related, are distinct policy objectives, and evidence of progress on the former does not imply equivalent progress on the latter.</p>
+
+      <p><strong>Cultural and religious dietary patterns.</strong> Many Nepali households follow vegetarian diets, while even non-vegetarian families may consume meat only occasionally because of cost, availability, or cultural practices. Vegetarian diets can provide enough protein when they include foods such as milk, curd, paneer, soybeans, lentils, beans, and a combination of pulses and cereals. However, when the diet mainly consists of rice, wheat, vegetables, and only small amounts of dal or other protein-rich foods, total protein intake may become inadequate.</p>
+
+      <p>Religious practices also influence the choice of protein sources. Eggs and meat may be avoided by some Hindu and other religious communities, reducing the variety of animal-based protein foods in the diet. Beef is generally avoided among Hindu communities in Nepal, while buffalo meat is widely consumed in many parts of the country. Buffalo milk and dairy products are also important traditional foods, particularly in rural areas, and can contribute significantly to protein intake. Cultural and religious dietary practices themselves do not necessarily cause protein deficiency, but limited food choices and a lack of dietary planning can increase the risk of inadequate protein intake.</p>
+
+      <p><strong>The nutrition transition.</strong> As urbanization and income growth proceed, dietary change in Nepal has favored refined carbohydrates, sugar-sweetened beverages, and packaged convenience foods rather than increased protein consumption <a class="cite-link" href="#ref-pradhananga">(Pradhananga et al., 2022)</a>. This shift is particularly evident among children and adolescents in urban and peri-urban areas, where packaged snack foods are inexpensive, heavily marketed, and require no preparation, in contrast to dal, milk, and fresh vegetables. A parallel and under-appreciated consequence of this transition is the erosion of traditional food preparation practices &mdash; soaking, sprouting, and fermentation &mdash; that historically enhanced the digestibility and effective protein yield of legume-based dishes; convenience-oriented preparation methods and instant food products frequently omit these steps. The nutrition transition therefore risks compounding rather than resolving Nepal's protein gap, by introducing a second, distinct set of diet-related health problems without addressing the underlying inadequacy in protein quality and distribution.</p>
+    </section>
+
+    <!-- ===================== NEPAL FOODS TABLE ===================== -->
+    <section class="chapter reveal" id="nepal-foods">
+      <span class="chapter-num">VIII.</span>
+      <h2>Dietary Protein Content of Foods Commonly Consumed in Nepal</h2>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr><th>Food</th><th>Protein per 100&nbsp;g</th><th>Typical household serving</th><th>Protein per serving</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Chhurpi (hard dried yak/chauri cheese)</td><td class="num">~50&ndash;60&nbsp;g</td><td>Small piece, 20&nbsp;g</td><td class="num">~10&ndash;12&nbsp;g</td></tr>
+            <tr><td>Bhatmas (roasted black soybean)</td><td class="num">~36&ndash;40&nbsp;g</td><td>Small handful, 30&nbsp;g</td><td class="num">~11&ndash;12&nbsp;g</td></tr>
+            <tr><td>Buff (buffalo meat, cooked)</td><td class="num">~26&ndash;28&nbsp;g</td><td>100&nbsp;g portion</td><td class="num">~26&ndash;28&nbsp;g</td></tr>
+            <tr><td>Musuro dal (red lentil, dry)</td><td class="num">~25&nbsp;g</td><td>1 bowl cooked (~150&nbsp;g)</td><td class="num">~8&nbsp;g</td></tr>
+            <tr><td>Kalo dal (black gram, dry)</td><td class="num">~25&nbsp;g</td><td>1 bowl cooked (~150&nbsp;g)</td><td class="num">~8&nbsp;g</td></tr>
+            <tr><td>Rahar dal (pigeon pea, dry)</td><td class="num">~22&nbsp;g</td><td>1 bowl cooked (~150&nbsp;g)</td><td class="num">~7&ndash;8&nbsp;g</td></tr>
+            <tr><td>Simi / beans (dry)</td><td class="num">~21&nbsp;g</td><td>1 bowl cooked (~150&nbsp;g)</td><td class="num">~8&nbsp;g</td></tr>
+            <tr><td>Buckwheat flour (phapar)</td><td class="num">~13&nbsp;g</td><td>Dhido from 100&nbsp;g flour</td><td class="num">~13&nbsp;g</td></tr>
+            <tr><td>Egg, whole (boiled)</td><td class="num">~13&nbsp;g</td><td>1 medium egg</td><td class="num">~6.5&nbsp;g</td></tr>
+            <tr><td>Maize / makai flour</td><td class="num">~9&ndash;11&nbsp;g</td><td>Dhido from 100&nbsp;g flour</td><td class="num">~9&ndash;11&nbsp;g</td></tr>
+            <tr><td>Kodo (finger millet) flour</td><td class="num">~7&ndash;8&nbsp;g</td><td>Dhido from 100&nbsp;g flour</td><td class="num">~7&ndash;8&nbsp;g</td></tr>
+            <tr><td>Buffalo milk</td><td class="num">~4.3&nbsp;g</td><td>1 glass (200&nbsp;mL)</td><td class="num">~8.6&nbsp;g</td></tr>
+            <tr><td>Juju dhau (yoghurt)</td><td class="num">~3&ndash;4&nbsp;g</td><td>1 bowl (150&nbsp;g)</td><td class="num">~5&nbsp;g</td></tr>
+            <tr><td>Bhat (cooked rice)</td><td class="num">~2.5&nbsp;g</td><td>1 large plate (250&nbsp;g)</td><td class="num">~6&nbsp;g</td></tr>
+            <tr><td>Momo, buffalo (steamed)</td><td>&mdash;</td><td>10 pieces</td><td class="num">~15&ndash;18&nbsp;g</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- ===================== RECOMMENDATIONS ===================== -->
+    <section class="chapter reveal" id="recommendations">
+      <span class="chapter-num">IX.</span>
+      <h2>Recommendations for Practice and Policy</h2>
+
+      <p>The evidence reviewed supports a tiered set of recommendations, distinguished by whether they are actionable at the household level or require sustained investment at the level of infrastructure and policy.</p>
+
+      <ul>
+        <li>Increase the density of dal served at main meals. The difference between a thin and a thick preparation of the same lentil quantity can represent a doubling of effective protein content per serving.</li>
+        <li>Introduce a protein-dense item at breakfast &mdash; buffalo milk, egg, roasted bhatmas, or chhurpi &mdash; given experimental evidence that even distribution of protein across meals improves its physiological utilization relative to concentration in a single meal <a class="cite-link" href="#ref-mamerow">(Mamerow et al., 2014)</a>.</li>
+        <li>Maintain and reinforce traditional preparation methods &mdash; soaking, sprouting, and fermentation &mdash; that measurably improve the digestibility of legume-based protein.</li>
+        <li>Preserve the traditional pairing of cereal and legume (dal bhat) as a nutritionally coherent combination, rather than displacing it with convenience foods.</li>
+        <li>Change household food-sharing practices so that pregnant and breastfeeding women, adolescent girls, and older adults receive a fair share of protein-rich foods instead of simply getting what is left over.</li>
+      </ul>
+    </section>
+
+    <!-- ===================== WHAT NOT TO DO ===================== -->
+    <section class="chapter reveal" id="what-not-to-do">
+      <span class="chapter-num">X.</span>
+      <h2>What Not to Do</h2>
+
+      <ul>
+        <li>Do not assume body weight tells you anything about protein status. Overweight and protein-deficient is an entirely ordinary combination.</li>
+        <li>Do not use protein to replace medical care. The signs are non-specific and can indicate thyroid disease, anemia, or other conditions requiring diagnosis.</li>
+        <li>Do not exceed roughly 2.0&nbsp;g/kg/day without a specific reason. Higher intakes are generally safe for healthy people but confer no additional benefit and displace other foods.</li>
+        <li>Do not increase protein without medical guidance if you have significant kidney disease <a class="cite-link" href="#ref-bauer">(Bauer et al., 2013)</a>.</li>
+        <li>Do not cut carbohydrates to make room for protein in a household already short of calories. In genuine food insecurity, total energy comes first; otherwise, the protein will simply be burned for fuel.</li>
+      </ul>
+    </section>
+
+    <!-- ===================== RESEARCH BEHIND THE CLAIMS ===================== -->
+    <section class="chapter reveal" id="research">
+      <span class="chapter-num">XI.</span>
+      <h2>Research Behind the Claims</h2>
+
+      <h3 id="animals-study">Eat Like the Animals (Raubenheimer &amp; Simpson, 2020)</h3>
+      <p>The work began at Oxford, where two young scientists were sorting through locust droppings to measure how much protein and how much carbohydrate the insects were actually eating. That unglamorous starting point led them to develop what they called nutritional geometry: a way of plotting, on a simple graph, the mix of protein, fat, and carbohydrate an animal is aiming for. Over the next three decades they tested the idea far beyond insects, studying orangutans in Borneo, baboons near Cape Town, grasshoppers in the Arizona desert, mice in the laboratory, and eventually humans. Their view was that appetite cannot be fully understood in a laboratory alone; it must be observed in animals living in their natural food environments as well.</p>
+      <p>What they found was consistent across species that otherwise have very little in common. Animals do not simply eat until they have taken in enough energy &mdash; they eat until they have taken in enough protein. If the food available to them is low in protein, they keep eating, consuming more fat and carbohydrate than they need in the process, until the protein requirement is finally satisfied. The authors call this the protein leverage effect: protein, though it makes up only a small share of the diet, exerts an outsized pull on how much total food gets eaten.</p>
+      <p>This matters for people because the human food supply has changed in a way that most animal food supplies have not. For most of human history, the foods available contained a reasonably steady proportion of protein. Modern processed foods do not. Packaged snacks, sweetened drinks, and many convenience meals are rich in calories but contain relatively little protein. If the human appetite still works by the same rule the authors observed in every other species, then a person eating mainly such foods will keep eating longer, and take in more total calories, simply because each portion supplies less protein than the body is looking for. The appetite system itself is not malfunctioning; it is responding as it always has, to a food environment it was never designed for.</p>
+      <p>The practical conclusion the authors reach is straightforward. Rather than counting calories or following restrictive diets, they suggest filling one's surroundings with whole foods such as nuts, fruits, vegetables, unrefined grains, legumes, good-quality oils, and moderate amounts of meat, while keeping factory-made meals and snacks occasional. If the food available is nutritionally intact, the body's own appetite can be trusted to do the balancing it evolved to do.</p>
+
+      <h3 id="incap-study">The INCAP Guatemala Longitudinal Study</h3>
+      <p>This study began in 1969 in four rural villages in Guatemala and became one of the longest-running nutrition experiments ever conducted <a class="cite-link" href="#ref-hoddinott">(Hoddinott &amp; Maluccio, 2008)</a>. Two of the villages were given free access to atole, a drink containing protein and added vitamins and minerals, available to every resident, including all children. The other two villages received fresco, a drink that was similar in appearance and distributed in the same way, but which contained sugar and vitamins and almost no protein. The supplements were provided continuously for eight years, until 1977.</p>
+      <p>The researchers then waited. Between 2002 and 2004, roughly twenty-five years after the supplementation ended, they returned to the same villages and located as many of the original child participants as they could. These were now adults between twenty-five and forty-two years old. The researchers measured how much schooling they had completed, how they performed on reading and reasoning tests, how much they earned, and whether they were living in poverty.</p>
+      <p>The results showed a clear and lasting difference. Adults who had received the protein-containing drink during early childhood had completed more years of school, performed better on cognitive tests, earned higher wages, and were less likely to be poor than those from the villages that had received the sugar drink. The most significant detail, however, was about timing. These benefits appeared only in those who had received the protein supplement before the age of two. Children who began receiving the same drink after that age showed none of these advantages as adults.</p>
+
+      <blockquote class="pull"><p>The period from conception to a child's second birthday is when the brain and body grow most rapidly. Adequate protein during this window supports that construction &mdash; and improving the diet later in childhood does not undo the damage of missing it.</p></blockquote>
+
+      <p>This finding is the main reason international health organizations now concentrate nutrition programs on pregnant women and children under two, a period commonly referred to as the first 1,000 days, rather than spreading the same resources evenly across all ages of childhood.</p>
+
+      <h3 id="leidy-study">The Leidy Weight-Loss Study</h3>
+      <p>This study sets out to examine a question that weighing scales cannot answer: when a person loses weight, what exactly are they losing? Researchers recruited a group of overweight and obese women and placed all of them on the same reduced-calorie diet for twelve weeks <a class="cite-link" href="#ref-leidy2012">(Leidy, 2012)</a>. The participants were divided into two groups, and the only meaningful difference between them was protein. One group followed a diet with a normal amount of protein; the other followed a diet with roughly twice as much. Total calories were kept the same for both groups, so any difference in outcome could be attributed to protein alone.</p>
+      <p>After twelve weeks, both groups had lost a similar amount of weight. Measured on a scale, the two diets appeared equally effective. But when the researchers examined what kind of tissue had been lost, the two groups differed considerably. The women on the higher-protein diet had lost mostly fat and had kept far more of their muscle. The women on the normal-protein diet had lost a noticeably larger share of muscle along with the fat. The higher-protein group also reported feeling fuller and experienced less of the increasing hunger that typically accompanies calorie restriction.</p>
+      <p>The reason this distinction is important is that muscle and fat are not interchangeable losses. When the body is given fewer calories than it needs, it must draw the difference from its own tissue, and it will break down muscle as readily as fat unless enough dietary protein is supplied to discourage it. Muscle, however, does a great deal of work: it supports physical strength and mobility, it influences how many calories the body burns at rest, and it helps regulate blood sugar. Losing it during a diet makes the body weaker and makes future weight gain more likely, even though the number on the scale looks like success.</p>
+      <p>The practical conclusion is that reducing calories is only half of a sound weight-loss approach. Without a deliberate increase in protein, a person may lose the intended amount of weight while unintentionally losing a substantial portion of their muscle in the process. For this reason, higher protein intake during periods of calorie restriction is now standard dietary guidance, and it is considered particularly important for older adults, who are already at risk of losing muscle with age.</p>
+    </section>
+
+    <!-- ===================== CONCLUSION ===================== -->
+    <section class="chapter reveal" id="conclusion">
+      <span class="chapter-num">XII.</span>
+      <h2>Conclusion</h2>
+
+      <p>Protein differs from the other macronutrients in one decisive respect: the body keeps no store of it. Carbohydrates and fat are held in reserve, but protein that is not used within roughly a day is broken down and its nitrogen excreted. It must therefore be supplied continuously, and a shortfall is paid for not from a store that can later be replenished, but from the body's own tissue.</p>
+
+      <p>Three conclusions follow from this. First, the protein on a plate and the protein a body can use are different quantities. Food must supply all nine essential amino acids in workable proportions and be digestible enough for them to reach the bloodstream. Cereal grains, which provide most of the protein in Nepali diets, perform poorly on both counts <a class="cite-link" href="#ref-fao">(FAO, 2011)</a>. Second, distribution matters alongside the daily total, because muscle responds to a threshold dose rather than a daily sum; a day's protein concentrated into one evening meal is used less completely than the same amount spread across three <a class="cite-link" href="#ref-mamerow">(Mamerow et al., 2014)</a>. Third, the body funds vital organs and enzymes first and withdraws amino acids from muscle, hair, nails and immunity to do so. Because those critical systems are defended so effectively, a person can be meaningfully short of protein for years while feeling only somewhat tired and while routine blood tests appear normal. This is the sense in which the deficiency is invisible, and why it persists in populations that do not consider themselves undernourished.</p>
+
+      <p>Taken together, these explain the Nepali situation with some precision. A cereal-dominated food system supplies calories reliably and usable protein poorly; food security policy has been measured against hunger rather than protein adequacy; and the ongoing shift toward packaged foods is displacing dal and milk while eroding the soaking, sprouting and fermentation that once raised the digestibility of plant protein <a class="cite-link" href="#ref-pradhananga">(Pradhananga et al., 2022)</a>. The consequences fall heaviest on young children, for whom the effects of early deficiency are largely irreversible, and on older adults, for whom muscle determines independence <a class="cite-link" href="#ref-bauer">(Bauer et al., 2013)</a>.</p>
+
+      <p>The corrective measures this review supports are modest and already present in the cuisine: thicker dal, a protein source at breakfast, retention of traditional preparation methods, and a fairer share of protein-dense food for pregnant women, adolescent girls and the elderly. Two limits should be stated plainly. Beyond approximately 2.0&nbsp;g/kg per day there is no established added benefit, and where households are genuinely short of food, total energy must be secured first, since protein eaten in a calorie deficit is simply burned as fuel.</p>
+    </section>
+
+    <!-- ===================== REFERENCES ===================== -->
+    <section class="chapter references reveal" id="reference">
+      <span class="chapter-num">XIII.</span>
+      <h2>Reference</h2>
+
+      <ol>
+        <li id="ref-libretexts">10.1: Proteins metabolism. (2021, April 10). <em>Chemistry LibreTexts.</em> <a href="https://chem.libretexts.org/Courses/Brevard_College/CHE_301_Biochemistry/10%3A_Metabolism_of_Amino_Acids/10.01%3A_Proteins_metabolism" target="_blank" rel="noopener noreferrer">chem.libretexts.org</a></li>
+        <li id="ref-icmr">ICMR&ndash;NIN. (2020). <em>Nutrient Requirements for Indians &mdash; A Report of the Expert Group.</em> ICMR&ndash;National Institute of Nutrition, India. <a href="https://www.nin.res.in/rdabook/brief_note.pdf" target="_blank" rel="noopener noreferrer">nin.res.in</a></li>
+        <li id="ref-harvard">Harvard Health. (2023, June 22). How much protein do you need every day? <a href="https://www.health.harvard.edu/blog/how-much-protein-do-you-need-every-day-201506188096" target="_blank" rel="noopener noreferrer">health.harvard.edu</a></li>
+        <li id="ref-moore">Moore, D. R., &amp; Churchward-Venne, T. A. (2014, July 23). Protein Ingestion to Stimulate Myofibrillar Protein Synthesis Requires Greater Relative Protein Intakes in Healthy Older Versus Younger Men. <em>Oxford Academy.</em> <a href="https://academic.oup.com/biomedgerontology/article-abstract/70/1/57/2947642" target="_blank" rel="noopener noreferrer">academic.oup.com</a></li>
+        <li id="ref-schoenfeld">Schoenfeld, B. J., &amp; Aragon, A. A. (2022, April 1). How much protein can the body use in a single meal for muscle-building? Implications for daily protein distribution. <em>Journal of the International Society of Sports Nutrition.</em> <a href="https://www.tandfonline.com/doi/full/10.1186/s12970-018-0215-1" target="_blank" rel="noopener noreferrer">tandfonline.com</a></li>
+        <li id="ref-mamerow">Mamerow, M., &amp; Joni, M. (2014, June). Dietary Protein Distribution Positively Influences 24-h Muscle Protein Synthesis in Healthy Adults. <em>The Journal of Nutrition.</em> <a href="https://www.sciencedirect.com/science/article/pii/S0022316622009087" target="_blank" rel="noopener noreferrer">sciencedirect.com</a></li>
+        <li id="ref-leidy2015">Leidy, H., &amp; Peter, C. (2015, June). The role of protein in weight loss and maintenance. <em>The American Journal of Clinical Nutrition.</em> <a href="https://www.sciencedirect.com/science/article/pii/S0002916523274274" target="_blank" rel="noopener noreferrer">sciencedirect.com</a></li>
+        <li id="ref-leidy2012">Leidy, H., Carnell, N. S., &amp; Mattes, R. D. (2012, September 6). Higher Protein Intake Preserves Lean Mass and Satiety with Weight Loss in Pre-obese and Obese Women. <em>The Obesity Society.</em> <a href="https://onlinelibrary.wiley.com/doi/10.1038/oby.2007.531" target="_blank" rel="noopener noreferrer">onlinelibrary.wiley.com</a></li>
+        <li id="ref-bauer">Bauer, J., &amp; Biolo, G. (2013, August). Evidence-Based Recommendations for Optimal Dietary Protein Intake in Older People: A Position Paper From the PROT-AGE Study Group. <em>JAMDA.</em> <a href="https://www.jamda.com/article/S1525-8610(13)00326-5/fulltext" target="_blank" rel="noopener noreferrer">jamda.com</a></li>
+        <li id="ref-fao">FAO. (2011, April). Dietary protein quality evaluation in human nutrition. <em>Food and Agriculture Organization of the United Nations.</em> <a href="https://www.fao.org/ag/humannutrition/35978-02317b979a686a57aa4593304ffc17f06.pdf" target="_blank" rel="noopener noreferrer">fao.org</a></li>
+        <li id="ref-pradhananga">Pradhananga, P., Shrestha, A., &amp; Adhikari, N. (2022, September 29). Double burden of malnutrition in Nepal: A trend analysis of protein-energy malnutrition and high body mass index using the data from global burden of disease 2010&ndash;2019. <a href="https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0273485" target="_blank" rel="noopener noreferrer">journals.plos.org</a></li>
+        <li id="ref-hoddinott">Hoddinott, J., &amp; Maluccio, J. (2008, February 2). Effect of a nutrition intervention during early childhood on economic productivity in Guatemalan adults. <a href="https://www.oda-alc.org/documentos/1341436746.pdf" target="_blank" rel="noopener noreferrer">oda-alc.org</a></li>
+        <li id="ref-rai">Rai, A., &amp; Maharjan, M. R. (2019). Consumption of rice, acceptability and sensory qualities of fortified rice amongst consumers of social safety net rice in Nepal. <em>PMC Home.</em> <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC6776338/" target="_blank" rel="noopener noreferrer">pmc.ncbi.nlm.nih.gov</a></li>
+      </ol>
+    </section>
+
+  </article>
+
+  <footer class="site-footer">
+    <svg class="fleur" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="0.8">
+      <path d="M12 2 L12 22 M4 12 L20 12 M6 6 L18 18 M18 6 L6 18" opacity="0.5"/>
+      <circle cx="12" cy="12" r="3"/>
+    </svg>
+    <div class="foot-text">&copy; Aswin Paudel &nbsp;&middot;&nbsp; Issue No. 1</div>
+    <a class="home-link" href="/">Back to the Journal</a>
+  </footer>
+
+</main>
+
+<script>
+  const revealEls = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('in');
+        io.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+  revealEls.forEach((el) => io.observe(el));
+</script>
+
+</body>
+</html>
