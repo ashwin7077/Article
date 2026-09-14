@@ -524,6 +524,81 @@
   }
   footer.site-footer .home-link:hover{ color:var(--gold-bright); border-color:var(--gold-bright); }
 
+  footer.site-footer{
+    margin-top:6vh;
+    padding-top:5vh;
+    border-top:1px solid var(--line);
+  }
+  footer.site-footer .fleur{ margin-top:-2px; }
+
+  .foot-contact p{
+    max-width:440px;
+    margin:0 auto 20px;
+    font-size:0.95rem;
+    line-height:1.8;
+    color:var(--ink-dim);
+  }
+  .foot-mail{
+    display:inline-block;
+    position:relative;
+    font-size:1.02rem;
+    font-style:italic;
+    color:var(--gold-bright);
+    text-decoration:none;
+    padding-bottom:3px;
+  }
+  .foot-mail::after{
+    content:"";
+    position:absolute;
+    left:0; bottom:0;
+    width:100%;
+    height:1px;
+    background:var(--gold-bright);
+    transform:scaleX(0.3);
+    transform-origin:left;
+    transition:transform 0.45s cubic-bezier(.2,.7,.2,1);
+  }
+  .foot-mail:hover::after, .foot-mail:focus-visible::after{ transform:scaleX(1); }
+
+  .foot-social{
+    display:flex;
+    flex-wrap:wrap;
+    align-items:center;
+    justify-content:center;
+    gap:16px;
+    row-gap:10px;
+    margin-top:22px;
+  }
+  .foot-social a{
+    font-size:12px;
+    letter-spacing:0.1em;
+    color:var(--ink-faint);
+    text-decoration:none;
+    border-bottom:1px solid transparent;
+    padding-bottom:2px;
+    transition:color 0.3s ease, border-color 0.3s ease;
+  }
+  .foot-social a:hover, .foot-social a:focus-visible{
+    color:var(--gold-bright);
+    border-color:var(--gold-bright);
+  }
+  .foot-social .dot{
+    width:3px; height:3px;
+    border-radius:50%;
+    background:var(--ink-faint);
+  }
+
+  .foot-bar{
+    margin-top:38px;
+    padding-top:26px;
+    border-top:1px solid var(--line);
+  }
+
+  @media (max-width:400px){
+    .foot-social .dot{ display:none; }
+    .foot-social{ gap:14px; }
+  }
+
   /* ---------- Reveal on scroll ---------- */
   .reveal{
     opacity:0;
@@ -1214,8 +1289,23 @@
       <path d="M12 2 L12 22 M4 12 L20 12 M6 6 L18 18 M18 6 L6 18" opacity="0.5"/>
       <circle cx="12" cy="12" r="3"/>
     </svg>
-    <div class="foot-text">&copy; Aswin Paudel &nbsp;&middot;&nbsp; Issue No. 1</div>
-    <a class="home-link" href="/">Back to the Journal</a>
+
+    <div class="foot-contact">
+      <p>For corrections, citations, or republishing requests &mdash; reach out directly.</p>
+      <a class="foot-mail" href="mailto:7077ashwin7@gmail.com">7077ashwin7@gmail.com</a>
+      <div class="foot-social">
+        <a href="https://www.linkedin.com/in/0xashwinhere/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+        <span class="dot"></span>
+        <a href="https://medium.com/@7077ashwin7" target="_blank" rel="noopener noreferrer">Medium</a>
+        <span class="dot"></span>
+        <a href="https://www.researchgate.net/profile/Aswin-Paudel?ev=hdr_xprf" target="_blank" rel="noopener noreferrer">ResearchGate</a>
+      </div>
+    </div>
+
+    <div class="foot-bar">
+      <div class="foot-text">&copy; Aswin Paudel &nbsp;&middot;&nbsp; Issue No. 1</div>
+      <a class="home-link" href="../index.html">Back to all articles</a>
+    </div>
   </footer>
 
 </main>
